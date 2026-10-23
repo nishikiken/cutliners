@@ -4,7 +4,9 @@ import {
   PumpkinTransparent, 
   SnowmanTransparent, 
   EasterEggTransparent, 
-  RoseTransparent 
+  RoseTransparent,
+  SummerPalmTransparent,
+  ScissorsArtisanTransparent
 } from './ThemeIcons';
 
 export function Header({ 
@@ -22,50 +24,50 @@ export function Header({
     cinzel: 'font-cinzel text-2xl sm:text-3xl tracking-widest'
   }[logoFont] || 'font-calligraphy text-4xl sm:text-5xl tracking-normal';
 
-  // Thematic accessory positioned on the LEFT, tightly connected to the logo
+  // Thematic accessory: physically integrated on the LEFT, touching/leaning against the "C"
   const renderLeftThemeDecor = () => {
     switch (currentTheme.id) {
       case 'halloween':
         return (
-          <div className="absolute -left-7 -top-2.5 z-10 pointer-events-none filter drop-shadow-[0_0_8px_rgba(255,119,0,0.6)]">
-            <PumpkinTransparent className="w-8 h-8 animate-pulse" />
+          <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(255,119,0,0.6)]">
+            <PumpkinTransparent className="w-8 h-8 sm:w-9 sm:h-9" />
           </div>
         );
       case 'newyear':
         return (
-          <div className="absolute -left-7 -top-3.5 z-10 pointer-events-none filter drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">
-            <SnowmanTransparent className="w-8 h-9" />
+          <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]">
+            <SnowmanTransparent className="w-8 h-9 sm:w-9 sm:h-10" />
           </div>
         );
       case 'easter':
         return (
-          <div className="absolute -left-7 -top-3 z-10 pointer-events-none filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
-            <EasterEggTransparent className="w-8 h-8" />
+          <div className="transform -rotate-3 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
+            <EasterEggTransparent className="w-8 h-8 sm:w-9 sm:h-9" />
           </div>
         );
       case 'valentines':
         return (
-          <div className="absolute -left-6 -top-2 z-10 pointer-events-none filter drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]">
-            <RoseTransparent className="w-7 h-7" />
+          <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]">
+            <RoseTransparent className="w-7 h-7 sm:w-8 sm:h-8" />
           </div>
         );
       case 'summer':
         return (
-          <div className="absolute -left-6 -top-2 z-10 pointer-events-none text-xl">
-            🌴
+          <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
+            <SummerPalmTransparent className="w-8 h-8 sm:w-9 sm:h-9" />
           </div>
         );
       default:
         return (
-          <div className="absolute -left-6 -top-1 z-10 pointer-events-none text-sm text-neutral-400 opacity-60">
-            ✂️
+          <div className="transform -rotate-12 translate-y-0.5 opacity-80">
+            <ScissorsArtisanTransparent className="w-6 h-6" />
           </div>
         );
     }
   };
 
   return (
-    // pt-24 (96px) ensures complete clearance from Telegram's top HUD
+    // pt-24 (96px) ensures complete clearance from Telegram's top HUD (Close ✕ and •••)
     <header className="w-full relative z-30 pt-24 pb-2 px-4 select-none">
       <div className="relative max-w-md mx-auto flex items-center justify-between">
         
@@ -78,23 +80,29 @@ export function Header({
           <span className="font-semibold">{currency === 'uah' ? '₴ UAH' : '$ USD'}</span>
         </button>
 
-        {/* Center: Brand Plaque "CUTLINERS" with Thematic Accessory on the LEFT */}
-        <div className="relative text-center group cursor-default">
-          <div className="relative px-2 py-0.5 inline-flex items-center justify-center">
-            {renderLeftThemeDecor()}
+        {/* Center: Brand Lockup "CUTLINERS" with Thematic Accessory on the LEFT leaning on "C" */}
+        <div className="flex items-center justify-center cursor-default">
+          <div className="inline-flex items-center justify-center -space-x-1.5 sm:-space-x-2">
+            
+            {/* Thematic Icon (Tightly hugging the initial capital C) */}
+            <div className="shrink-0 z-10 pointer-events-none">
+              {renderLeftThemeDecor()}
+            </div>
 
-            <div>
-              <h1 className={`${fontClass} font-normal text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-100 to-neutral-400 py-0.5 drop-shadow-[0_2px_14px_rgba(255,255,255,0.2)] leading-none pl-2`}>
+            {/* Brand Title */}
+            <div className="flex flex-col items-center">
+              <h1 className={`${fontClass} font-normal text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-100 to-neutral-400 py-0.5 drop-shadow-[0_2px_14px_rgba(255,255,255,0.2)] leading-none pl-1`}>
                 Cutliners
               </h1>
               <div className="flex items-center justify-center gap-1.5 mt-0.5 opacity-60">
-                <span className="h-[1px] w-5 bg-gradient-to-r from-transparent to-neutral-500"></span>
+                <span className="h-[1px] w-4 bg-gradient-to-r from-transparent to-neutral-500"></span>
                 <span className="text-[8px] font-mono tracking-[0.32em] uppercase text-neutral-400">
                   REWORK ATELIER
                 </span>
-                <span className="h-[1px] w-5 bg-gradient-to-l from-transparent to-neutral-500"></span>
+                <span className="h-[1px] w-4 bg-gradient-to-l from-transparent to-neutral-500"></span>
               </div>
             </div>
+
           </div>
         </div>
 

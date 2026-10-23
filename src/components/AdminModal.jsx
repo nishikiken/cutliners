@@ -139,7 +139,7 @@ export function AdminModal({
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      <div className="relative w-full max-w-md bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.08] shadow-2xl p-4 sm:p-5 text-neutral-200 z-10 max-h-[88vh] overflow-y-auto no-scrollbar space-y-4 mt-16 sm:mt-0">
+      <div className="relative w-full max-w-md bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.08] shadow-2xl p-4 sm:p-5 text-neutral-200 z-10 max-h-[85vh] overflow-y-auto no-scrollbar space-y-4 mt-20 sm:mt-0">
         
         {/* Header with Title, Close, and LOG OUT Button */}
         <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
@@ -152,7 +152,7 @@ export function AdminModal({
                 Мастерская Cutliners
               </h2>
               <span className="text-[10px] text-neutral-400 font-mono">
-                Панель управления для Nishiki & Vibe Code
+                Панель управления • Nishiki & Vibe Code
               </span>
             </div>
           </div>
@@ -161,11 +161,11 @@ export function AdminModal({
             {/* Prominent Log Out Button */}
             <button
               onClick={onLogoutMaster}
-              className="py-1 px-2.5 rounded-lg bg-red-950/60 hover:bg-red-900/80 border border-red-500/30 text-red-300 text-[10px] font-mono flex items-center gap-1 transition-all active:scale-95"
-              title="Выйти из режима мастера"
+              className="py-1 px-2.5 rounded-lg bg-red-950/70 hover:bg-red-900 border border-red-500/40 text-red-300 text-[10px] font-mono flex items-center gap-1 transition-all active:scale-95"
+              title="Выйти из админки"
             >
               <LogOut className="w-3 h-3" />
-              <span>Выйти</span>
+              <span>Выйти из админки</span>
             </button>
 
             <button
@@ -391,13 +391,13 @@ export function AdminModal({
               </div>
             </div>
 
-            {/* Measurements (Simple!) */}
+            {/* Measurements (Clean & Simple) */}
             <div className="p-2.5 rounded-xl bg-black/40 border border-white/[0.04] space-y-1.5">
               <span className="text-[10px] text-neutral-400 font-bold block">Замеры вещи:</span>
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="text"
-                  placeholder="Пояс (напр. 84 см)"
+                  placeholder="Пояс, см"
                   value={formData.measurements.waist}
                   onChange={(e) => setFormData(prev => ({
                     ...prev,
@@ -407,7 +407,7 @@ export function AdminModal({
                 />
                 <input
                   type="text"
-                  placeholder="Длина (напр. 110 см)"
+                  placeholder="Длина, см"
                   value={formData.measurements.outseam}
                   onChange={(e) => setFormData(prev => ({
                     ...prev,
@@ -417,7 +417,7 @@ export function AdminModal({
                 />
                 <input
                   type="text"
-                  placeholder="Шаговый шов (напр. 80 см)"
+                  placeholder="Шаговый шов, см"
                   value={formData.measurements.inseam}
                   onChange={(e) => setFormData(prev => ({
                     ...prev,
@@ -427,7 +427,7 @@ export function AdminModal({
                 />
                 <input
                   type="text"
-                  placeholder="Выход низа (напр. 25 см)"
+                  placeholder="Выход низа, см"
                   value={formData.measurements.legOpening}
                   onChange={(e) => setFormData(prev => ({
                     ...prev,

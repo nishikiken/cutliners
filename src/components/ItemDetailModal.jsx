@@ -58,8 +58,8 @@ export function ItemDetailModal({
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      {/* Modal with top clearance from Telegram HUD (mt-12 sm:mt-0) */}
-      <div className="relative w-full max-w-md bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.06] shadow-2xl max-h-[88vh] overflow-y-auto no-scrollbar z-10 flex flex-col text-neutral-200 mt-12 sm:mt-0">
+      {/* Modal with top clearance from Telegram HUD (mt-20 sm:mt-0) */}
+      <div className="relative w-full max-w-md bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.06] shadow-2xl max-h-[85vh] overflow-y-auto no-scrollbar z-10 flex flex-col text-neutral-200 mt-20 sm:mt-0">
         
         {/* Mobile Pull Handle & Close Button */}
         <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-2 bg-[#0c0d12]/95 backdrop-blur-md border-b border-white/[0.04]">

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { INITIAL_ITEMS } from './data/initialCatalog';
 import { THEMES } from './data/themes';
 import { Header } from './components/Header';
-import { HalloweenDecor } from './components/HalloweenDecor';
-import { ThemeDecors } from './components/ThemeDecors';
 import { AmbientAtmosphere } from './components/AmbientAtmosphere';
 import { CategoryFilter } from './components/CategoryFilter';
 import { ItemCard } from './components/ItemCard';
@@ -164,12 +162,8 @@ export default function App() {
           onToggleCurrency={handleToggleCurrency}
         />
 
-        {/* Integrated Atelier Workshop Atmosphere Shelf (100% Transparent, no white boxes, no confetti) */}
-        {currentThemeId === 'halloween' ? (
-          <HalloweenDecor />
-        ) : (
-          <ThemeDecors themeId={currentThemeId} />
-        )}
+        {/* Clean breathing spacer between header and catalog */}
+        <div className="h-2 sm:h-3" />
 
         {/* Main Content */}
         <main className="relative z-10 px-3 py-2 space-y-3 flex-grow">
@@ -256,12 +250,10 @@ export default function App() {
 
         </main>
 
-        {/* Mobile Sticky Bottom Nav Bar */}
+        {/* Mobile Sticky Bottom Nav Bar (3 evenly spaced buttons: Каталог, Замеры, Заказать) */}
         <BottomNav
           onOpenGuide={() => setIsGuideOpen(true)}
-          onOpenAdmin={handleOpenAdmin}
           onOpenOrderModal={() => setIsOrderModalOpen(true)}
-          isMasterMode={isMasterMode}
         />
 
       </div>

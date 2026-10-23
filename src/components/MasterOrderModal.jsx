@@ -16,7 +16,7 @@ export function MasterOrderModal({ isOpen, onClose }) {
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      <div className="relative w-full max-w-sm bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.08] shadow-2xl p-5 text-neutral-200 z-10 space-y-4">
+      <div className="relative w-full max-w-sm bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.08] shadow-2xl p-5 text-neutral-200 z-10 space-y-4 mt-20 sm:mt-0">
         
         <div className="flex items-center justify-between pb-2 border-b border-white/[0.04]">
           <div className="flex items-center gap-2">

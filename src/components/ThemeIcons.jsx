@@ -208,3 +208,41 @@ export function RoseTransparent({ className = 'w-7 h-7' }) {
     </svg>
   );
 }
+
+// 7. Radiant Golden Summer Sun & Palm (100% Transparent Background, replaces emoji!)
+export function SummerPalmTransparent({ className = 'w-8 h-8' }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Golden Warm Sun */}
+      <circle cx="62" cy="42" r="22" fill="url(#summerSunGrad)" filter="drop-shadow(0 0 8px rgba(245,158,11,0.6))" />
+      {/* Palm Trunk */}
+      <path d="M 32 90 Q 42 60 52 38" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
+      {/* Curved Palm Fronds */}
+      <path d="M 52 38 Q 24 32 12 50" stroke="#15803d" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 52 38 Q 36 18 30 8" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 52 38 Q 66 16 80 18" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 52 38 Q 78 32 90 44" stroke="#15803d" strokeWidth="3" strokeLinecap="round" />
+      <path d="M 52 38 Q 62 52 66 66" stroke="#166534" strokeWidth="2.5" strokeLinecap="round" />
+      <defs>
+        <radialGradient id="summerSunGrad" cx="45%" cy="45%" r="55%">
+          <stop offset="0%" stopColor="#fef08a" />
+          <stop offset="65%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#ea580c" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+// 8. Classic Artisan Shears (100% Transparent Background)
+export function ScissorsArtisanTransparent({ className = 'w-7 h-7' }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 26 74 Q 16 64 26 54 Q 36 64 26 74 Z" stroke="#cbd5e1" strokeWidth="3.5" />
+      <path d="M 44 84 Q 34 94 24 84 Q 34 74 44 84 Z" stroke="#cbd5e1" strokeWidth="3.5" />
+      <line x1="28" y1="62" x2="78" y2="22" stroke="#e2e8f0" strokeWidth="4" strokeLinecap="round" />
+      <line x1="38" y1="80" x2="82" y2="34" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="50" cy="50" r="3" fill="#f59e0b" />
+    </svg>
+  );
+}
