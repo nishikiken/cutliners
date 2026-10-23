@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/cutliners/', // Exactly matches GitHub Pages repo https://nishikiken.github.io/cutliners/
+  base: './', // Relative base for 100% compatibility with any GitHub Pages directory or domain
   plugins: [
     react(),
     tailwindcss(),
