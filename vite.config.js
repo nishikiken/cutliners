@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // Ensures relative asset paths so GitHub Pages at /cutliners/ works without 404s
+  base: '/cutliners/', // Exactly matches GitHub Pages repo https://nishikiken.github.io/cutliners/
   plugins: [
     react(),
     tailwindcss(),
