@@ -101,25 +101,25 @@ export function Header({
               {renderLeftThemeDecor()}
             </div>
 
-            {/* Brand Title */}
-            <div className="flex flex-col items-center">
-              <h1 className={`${fontClass} font-normal text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-100 to-neutral-400 py-0.5 drop-shadow-[0_2px_14px_rgba(255,255,255,0.2)] leading-none pl-1`}>
+            {/* Brand Title (whitespace-nowrap guarantees REWORK ATELIER is always a single line) */}
+            <div className="flex flex-col items-center shrink-0 whitespace-nowrap">
+              <h1 className={`${fontClass} font-normal text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-100 to-neutral-400 py-0.5 drop-shadow-[0_2px_14px_rgba(255,255,255,0.2)] leading-none pl-1 whitespace-nowrap`}>
                 Cutliners
               </h1>
-              <div className="flex items-center justify-center gap-1.5 mt-0.5 opacity-60">
-                <span className="h-[1px] w-4 bg-gradient-to-r from-transparent to-neutral-500"></span>
-                <span className="text-[8px] font-mono tracking-[0.32em] uppercase text-neutral-400">
+              <div className="flex items-center justify-center gap-1.5 mt-0.5 opacity-60 whitespace-nowrap shrink-0">
+                <span className="h-[1px] w-4 bg-gradient-to-r from-transparent to-neutral-500 shrink-0"></span>
+                <span className="text-[8px] font-mono tracking-[0.32em] uppercase text-neutral-400 whitespace-nowrap shrink-0">
                   REWORK ATELIER
                 </span>
-                <span className="h-[1px] w-4 bg-gradient-to-l from-transparent to-neutral-500"></span>
+                <span className="h-[1px] w-4 bg-gradient-to-l from-transparent to-neutral-500 shrink-0"></span>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* Right column: Guide and discreet Master indicator if unlocked */}
-        <div className="w-20 flex justify-end items-center gap-1.5 z-20">
+        {/* Right column: Guide button (Admin is ONLY accessible via secret scissors in footer) */}
+        <div className="w-20 flex justify-end items-center z-20">
           <button
             onClick={onOpenGuide}
             className="p-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-neutral-400 hover:text-white active:scale-95 transition-all"
@@ -127,17 +127,6 @@ export function Header({
           >
             <Scissors className="w-3.5 h-3.5 rotate-90" />
           </button>
-
-          {/* Master Panel button ONLY visible if master mode is already unlocked! */}
-          {isMasterMode && (
-            <button
-              onClick={onOpenAdmin}
-              className="p-2 rounded-full bg-white/[0.08] text-white border border-white/20 active:scale-95 transition-all"
-              title="Панель мастера"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-white" />
-            </button>
-          )}
         </div>
 
       </div>

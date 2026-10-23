@@ -182,22 +182,6 @@ export default function App() {
             onToggleViewMode={() => setViewMode(prev => prev === 'grid' ? 'list' : 'grid')}
           />
 
-          {/* Master mode indicator if unlocked */}
-          {isMasterMode && (
-            <div className="py-1.5 px-3 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-between text-xs font-mono">
-              <div className="flex items-center gap-1.5 text-neutral-300">
-                <ShieldCheck className="w-3.5 h-3.5 text-white" />
-                <span className="text-[11px] font-bold">Мастер-режим активен</span>
-              </div>
-              <button
-                onClick={() => setIsAdminOpen(true)}
-                className="text-[11px] text-white hover:underline"
-              >
-                + Добавить вещь / Тема
-              </button>
-            </div>
-          )}
-
           {/* Catalog Grid */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 px-1">
@@ -239,11 +223,8 @@ export default function App() {
           {/* Custom Rework Tailoring Section with Intellectual & Visual Intermission Break */}
           <CustomOrderSection onOpenGuide={() => setIsGuideOpen(true)} />
 
-          {/* Atmospheric Thematic Ground Silhouette (Tombstones, Pines, Dunes, etc.) */}
-          <FooterThemeGround themeId={currentThemeId} />
-
           {/* Minimalist Footer with discreet master trigger */}
-          <footer className="pt-3 pb-2 text-center space-y-1 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
+          <footer className="pt-4 pb-1 text-center space-y-1 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
               <button 
                 onClick={handleOpenAdmin}
@@ -259,6 +240,9 @@ export default function App() {
               Кастомный перешив винтажного денима под твои мерки
             </p>
           </footer>
+
+          {/* Atmospheric Thematic Ground Silhouette (Tombstones, Pines, Dunes, etc.) anchors the very bottom of the page */}
+          <FooterThemeGround themeId={currentThemeId} />
 
         </main>
 

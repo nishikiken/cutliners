@@ -122,68 +122,71 @@ export function AmbientAtmosphere({ themeId }) {
     );
   }
 
-  // 3. SUMMER: Gentle, slow swaying volumetric Sunbeams streaming from the top corner (NO falling particles!)
+  // 3. SUMMER: Distinct, elegant volumetric sunbeam lines & shafts streaming from top-right corner
   if (themeId === 'summer') {
     return (
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-10 select-none">
         <style>{`
-          @keyframes sunbeamSwayLeft {
+          @keyframes sunraySweep {
             0% {
-              transform: rotate(-12deg) scaleX(0.9);
-              opacity: 0.35;
+              transform: rotate(-4deg) scaleY(0.96);
+              opacity: 0.45;
             }
             50% {
-              transform: rotate(8deg) scaleX(1.15);
-              opacity: 0.65;
+              transform: rotate(4deg) scaleY(1.04);
+              opacity: 0.8;
             }
             100% {
-              transform: rotate(-12deg) scaleX(0.9);
-              opacity: 0.35;
-            }
-          }
-          @keyframes sunbeamSwayRight {
-            0% {
-              transform: rotate(10deg) scaleX(1.1);
-              opacity: 0.55;
-            }
-            50% {
-              transform: rotate(-6deg) scaleX(0.85);
-              opacity: 0.3;
-            }
-            100% {
-              transform: rotate(10deg) scaleX(1.1);
-              opacity: 0.55;
+              transform: rotate(-4deg) scaleY(0.96);
+              opacity: 0.45;
             }
           }
         `}</style>
 
-        {/* Primary Sunbeam streaming from top-right corner */}
-        <div
-          className="absolute -top-16 -right-12 w-64 h-[110vh] origin-top-right blur-2xl"
-          style={{
-            background: 'linear-gradient(135deg, rgba(251,191,36,0.22) 0%, rgba(245,158,11,0.12) 35%, rgba(234,88,12,0.03) 70%, transparent 100%)',
-            animation: 'sunbeamSwayLeft 16s ease-in-out infinite'
-          }}
-        />
+        {/* Distinct Diagonal Sunlight Rays (Visible Lines & Volumetric Shafts) */}
+        <svg
+          className="absolute -top-12 -right-12 w-[130vw] sm:w-[90vw] h-[115vh] origin-top-right filter drop-shadow-[0_0_10px_rgba(251,191,36,0.35)]"
+          style={{ animation: 'sunraySweep 18s ease-in-out infinite' }}
+          viewBox="0 0 500 700"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="rayGradMain" x1="500" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#fef08a" stopOpacity="0.6" />
+              <stop offset="25%" stopColor="#fbbf24" stopOpacity="0.35" />
+              <stop offset="60%" stopColor="#f59e0b" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#ea580c" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="rayGradThin" x1="500" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.75" />
+              <stop offset="35%" stopColor="#fef08a" stopOpacity="0.45" />
+              <stop offset="70%" stopColor="#f59e0b" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#ea580c" stopOpacity="0" />
+            </linearGradient>
+          </defs>
 
-        {/* Secondary delicate ray */}
-        <div
-          className="absolute -top-10 -right-24 w-80 h-[95vh] origin-top-right blur-3xl"
-          style={{
-            background: 'linear-gradient(145deg, rgba(253,224,71,0.28) 0%, rgba(245,158,11,0.08) 40%, transparent 80%)',
-            animation: 'sunbeamSwayRight 22s ease-in-out infinite'
-          }}
-        />
+          {/* Ray Shaft 1: Broad warm light beam */}
+          <polygon points="500,0 470,0 120,700 170,700" fill="url(#rayGradMain)" opacity="0.7" />
 
-        {/* Tertiary soft ambient beam */}
-        <div
-          className="absolute -top-20 right-16 w-48 h-[85vh] origin-top blur-xl"
-          style={{
-            background: 'linear-gradient(160deg, rgba(251,191,36,0.18) 0%, rgba(217,119,6,0.05) 50%, transparent 100%)',
-            animation: 'sunbeamSwayLeft 19s ease-in-out infinite',
-            animationDelay: '3s'
-          }}
-        />
+          {/* Ray Line 2: Crisp distinct sunlight line */}
+          <line x1="500" y1="0" x2="220" y2="700" stroke="url(#rayGradThin)" strokeWidth="4" opacity="0.8" />
+
+          {/* Ray Shaft 3: Medium diagonal beam */}
+          <polygon points="500,0 490,0 260,700 290,700" fill="url(#rayGradMain)" opacity="0.85" />
+
+          {/* Ray Line 4: Delicate piercing sunbeam line */}
+          <line x1="500" y1="0" x2="340" y2="700" stroke="url(#rayGradThin)" strokeWidth="3.5" opacity="0.8" />
+
+          {/* Ray Shaft 5: Soft ambient side ray */}
+          <polygon points="500,0 500,40 370,700 410,700" fill="url(#rayGradMain)" opacity="0.65" />
+
+          {/* Ray Line 6: High angle sharp beam */}
+          <line x1="500" y1="0" x2="80" y2="700" stroke="url(#rayGradThin)" strokeWidth="2.5" opacity="0.65" />
+
+          {/* Glowing origin flare at top right corner */}
+          <circle cx="500" cy="0" r="70" fill="url(#rayGradMain)" opacity="0.6" filter="blur(6px)" />
+        </svg>
       </div>
     );
   }

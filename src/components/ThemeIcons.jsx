@@ -296,25 +296,70 @@ export function SummerPalmTransparent({ className = 'w-9 h-9' }) {
         filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
       />
 
-      {/* Graceful Palm Tree rising from the sand dune */}
-      {/* Trunk */}
+      {/* Graceful Detailed Tropical Palm Tree */}
+      {/* Curved Palm Trunk with textured rings */}
       <path
-        d="M 44 80 Q 48 54 56 30"
-        stroke="#78350f"
-        strokeWidth="4"
+        d="M 44 82 Q 41 58 50 34"
+        stroke="#854d0e"
+        strokeWidth="4.5"
         strokeLinecap="round"
       />
-      {/* Coconut accents */}
-      <circle cx="53" cy="32" r="2.5" fill="#451a03" />
-      <circle cx="57" cy="33" r="2.5" fill="#451a03" />
+      <path
+        d="M 44 82 Q 41 58 50 34"
+        stroke="#593006"
+        strokeWidth="4.5"
+        strokeDasharray="2.5,4"
+        strokeLinecap="round"
+      />
 
-      {/* Lush Palm Fronds curving out */}
-      <path d="M 56 30 Q 34 22 18 34" stroke="#15803d" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 56 30 Q 42 12 34 4" stroke="#16a34a" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 56 30 Q 68 12 82 14" stroke="#22c55e" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 56 30 Q 80 24 90 38" stroke="#16a34a" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 56 30 Q 68 44 74 58" stroke="#15803d" strokeWidth="2.4" strokeLinecap="round" />
-      <path d="M 56 30 Q 38 40 30 52" stroke="#166534" strokeWidth="2.2" strokeLinecap="round" />
+      {/* Cluster of 3 ripe coconuts at crown */}
+      <circle cx="47" cy="35" r="2.8" fill="#451a03" />
+      <circle cx="52" cy="36" r="2.8" fill="#381402" />
+      <circle cx="49" cy="38" r="2.6" fill="#501d04" />
+
+      {/* Elegant, Lush Tropical Palm Fronds (Realistic feather fronds) */}
+      {/* 1. Left droop frond */}
+      <path
+        d="M 50 34 Q 28 32 14 46 Q 30 38 50 34 Z"
+        fill="#15803d"
+        stroke="#14532d"
+        strokeWidth="0.8"
+      />
+      {/* 2. Upper-left high frond */}
+      <path
+        d="M 50 34 Q 34 16 26 8 Q 42 20 50 34 Z"
+        fill="#16a34a"
+        stroke="#15803d"
+        strokeWidth="0.8"
+      />
+      {/* 3. Center crown frond */}
+      <path
+        d="M 50 34 Q 52 10 56 4 Q 58 20 50 34 Z"
+        fill="#22c55e"
+        stroke="#16a34a"
+        strokeWidth="0.8"
+      />
+      {/* 4. Upper-right reaching frond */}
+      <path
+        d="M 50 34 Q 68 12 84 14 Q 72 24 50 34 Z"
+        fill="#16a34a"
+        stroke="#15803d"
+        strokeWidth="0.8"
+      />
+      {/* 5. Right sweeping frond towards text */}
+      <path
+        d="M 50 34 Q 78 26 92 40 Q 76 40 50 34 Z"
+        fill="#15803d"
+        stroke="#14532d"
+        strokeWidth="0.8"
+      />
+      {/* 6. Lower right droop frond */}
+      <path
+        d="M 50 34 Q 70 46 76 60 Q 64 50 50 34 Z"
+        fill="#166534"
+        stroke="#14532d"
+        strokeWidth="0.8"
+      />
     </svg>
   );
 }
