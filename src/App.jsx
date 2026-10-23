@@ -4,6 +4,7 @@ import { THEMES } from './data/themes';
 import { Header } from './components/Header';
 import { HalloweenDecor } from './components/HalloweenDecor';
 import { ThemeDecors } from './components/ThemeDecors';
+import { SnowEffect } from './components/SnowEffect';
 import { CategoryFilter } from './components/CategoryFilter';
 import { ItemCard } from './components/ItemCard';
 import { ItemDetailModal } from './components/ItemDetailModal';
@@ -17,7 +18,7 @@ export default function App() {
   // 1. Persistent Catalog items (rework focused)
   const [items, setItems] = useState(() => {
     try {
-      const saved = localStorage.getItem('cutliners_rework_catalog_v3');
+      const saved = localStorage.getItem('cutliners_rework_catalog_v4');
       return saved ? JSON.parse(saved) : INITIAL_ITEMS;
     } catch {
       return INITIAL_ITEMS;
@@ -43,9 +44,9 @@ export default function App() {
   const [contacts, setContacts] = useState(() => {
     try {
       const saved = localStorage.getItem('cutliners_contacts');
-      return saved ? JSON.parse(saved) : { telegram: '@cutliners', whatsapp: '+79991234567' };
+      return saved ? JSON.parse(saved) : { telegram: '@peretonirovan', whatsapp: '+79991234567' };
     } catch {
-      return { telegram: '@cutliners', whatsapp: '+79991234567' };
+      return { telegram: '@peretonirovan', whatsapp: '+79991234567' };
     }
   });
 
@@ -67,7 +68,7 @@ export default function App() {
   // Sync to local storage
   useEffect(() => {
     try {
-      localStorage.setItem('cutliners_rework_catalog_v3', JSON.stringify(items));
+      localStorage.setItem('cutliners_rework_catalog_v4', JSON.stringify(items));
     } catch (e) {
       console.warn('LocalStorage limit reached', e);
     }
@@ -151,13 +152,16 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b ${currentTheme.bgGradient} text-neutral-200 flex flex-col items-center selection:bg-amber-500/30 selection:text-amber-200 transition-colors duration-500`}>
+    <div className={`min-h-screen bg-gradient-to-b ${currentTheme.bgGradient} text-neutral-200 flex flex-col items-center selection:bg-amber-500/20 selection:text-amber-200 transition-colors duration-500`}>
       
+      {/* Delicate falling snowflakes across whole site for New Year theme */}
+      {currentThemeId === 'newyear' && <SnowEffect />}
+
       {/* Mobile-first Container (Full width on phones, padded for Telegram WebApp) */}
       <div className="w-full max-w-md min-h-screen bg-[#08080c] relative flex flex-col pb-24 shadow-2xl">
         
         {/* Subtle background noise texture */}
-        <div className="absolute inset-0 bg-noise pointer-events-none opacity-40" />
+        <div className="absolute inset-0 bg-noise pointer-events-none opacity-30" />
 
         {/* Telegram WebApp-compatible Header (Padding top protects against Close/More buttons) */}
         <Header
@@ -170,7 +174,7 @@ export default function App() {
           onToggleCurrency={handleToggleCurrency}
         />
 
-        {/* Integrated Atelier Workshop Atmosphere Shelf (No floating white boxes!) */}
+        {/* Integrated Atelier Workshop Atmosphere Shelf (100% Transparent, no white boxes!) */}
         {currentThemeId === 'halloween' ? (
           <HalloweenDecor />
         ) : (
@@ -193,10 +197,10 @@ export default function App() {
 
           {/* Master mode indicator if unlocked */}
           {isMasterMode && (
-            <div className="py-2 px-3 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between text-xs font-mono">
-              <div className="flex items-center gap-1.5 text-amber-300">
+            <div className="py-1.5 px-3 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center gap-1.5 text-neutral-300">
                 <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-                <span className="text-[11px] font-bold">Мастер-режим</span>
+                <span className="text-[11px] font-bold">Мастер-режим активен</span>
               </div>
               <button
                 onClick={() => setIsAdminOpen(true)}
@@ -207,9 +211,9 @@ export default function App() {
             </div>
           )}
 
-          {/* Catalog Grid */}
+          {/* Catalog Grid (Less borders, high-end look) */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400 px-1">
+            <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 px-1">
               <span>Каталог перешива</span>
               <span>{filteredItems.length} {filteredItems.length === 1 ? 'вещь' : 'вещей'}</span>
             </div>
@@ -237,7 +241,7 @@ export default function App() {
                     setSelectedCategory('Все');
                     setSearchQuery('');
                   }}
-                  className="text-xs text-amber-400 underline font-mono"
+                  className="text-xs text-neutral-400 hover:text-white underline font-mono"
                 >
                   Сбросить поиск
                 </button>
@@ -245,21 +249,17 @@ export default function App() {
             )}
           </div>
 
-          {/* Custom Rework Tailoring Section */}
-          <CustomOrderSection
-            contacts={contacts}
-            onOpenGuide={() => setIsGuideOpen(true)}
-            currentTheme={currentTheme}
-          />
+          {/* Custom Rework Tailoring Section with Intellectual & Visual Intermission Break */}
+          <CustomOrderSection onOpenGuide={() => setIsGuideOpen(true)} />
 
-          {/* Footer */}
-          <footer className="pt-3 pb-2 text-center space-y-1 font-mono text-neutral-500 text-[10px] border-t border-white/[0.06]">
+          {/* Minimalist Footer */}
+          <footer className="pt-3 pb-2 text-center space-y-1 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
-              <Scissors className="w-3 h-3 text-amber-400" />
-              <span className="font-bold tracking-widest text-neutral-200">CUTLINERS</span>
+              <Scissors className="w-3 h-3 text-neutral-500" />
+              <span className="font-bold tracking-widest text-neutral-300">CUTLINERS</span>
               <span>• Rework Atelier</span>
             </div>
-            <p className="text-neutral-500 text-[9px]">
+            <p className="text-neutral-600">
               Кастомный перешив винтажного денима под твои мерки
             </p>
           </footer>
@@ -283,8 +283,6 @@ export default function App() {
           item={selectedItem}
           onClose={() => setSelectedItem(null)}
           onOpenGuide={() => setIsGuideOpen(true)}
-          contacts={contacts}
-          currentTheme={currentTheme}
           currency={currency}
         />
       )}
@@ -313,7 +311,7 @@ export default function App() {
       {/* PIN Prompt Modal */}
       {showPinPrompt && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-xs bg-[#0e0f16] rounded-3xl border border-amber-500/30 p-5 text-neutral-200 font-mono space-y-4 shadow-2xl">
+          <div className="w-full max-w-xs bg-[#0e0f16] rounded-3xl border border-white/[0.08] p-5 text-neutral-200 font-mono space-y-4 shadow-2xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
                 <ShieldCheck className="w-4 h-4" />
@@ -349,7 +347,7 @@ export default function App() {
 
               <button
                 type="submit"
-                className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs active:scale-[0.99]"
+                className="w-full py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.12] text-white font-bold text-xs active:scale-[0.99] border border-white/[0.08]"
               >
                 Войти в мастерскую
               </button>
@@ -357,7 +355,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => handleUnlockMaster('777')}
-                className="w-full text-center text-[10px] text-neutral-500 hover:text-amber-400 underline"
+                className="w-full text-center text-[10px] text-neutral-500 hover:text-white underline"
               >
                 Быстрый вход в 1 клик (код 777)
               </button>
