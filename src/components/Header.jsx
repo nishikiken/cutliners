@@ -35,7 +35,7 @@ export function Header({
         );
       case 'newyear':
         return (
-          <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]">
+          <div className="transform -rotate-3 -translate-y-1 filter drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">
             <SnowmanTransparent className="w-8 h-9 sm:w-9 sm:h-10" />
           </div>
         );
@@ -106,7 +106,7 @@ export function Header({
           </div>
         </div>
 
-        {/* Right: Master Control & Guide */}
+        {/* Right: Guide and discreet Master indicator if unlocked */}
         <div className="flex items-center gap-1.5">
           <button
             onClick={onOpenGuide}
@@ -116,21 +116,16 @@ export function Header({
             <Scissors className="w-3.5 h-3.5 rotate-90" />
           </button>
 
-          <button
-            onClick={onOpenAdmin}
-            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full transition-all text-xs font-mono active:scale-95 ${
-              isMasterMode 
-                ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' 
-                : 'bg-white/[0.04] hover:bg-white/[0.08] text-neutral-400 hover:text-white'
-            }`}
-            title="Мастерская"
-          >
-            {isMasterMode ? (
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-            ) : (
-              <span className="text-[11px]">Мастер</span>
-            )}
-          </button>
+          {/* Master Panel button ONLY visible if master mode is already unlocked! */}
+          {isMasterMode && (
+            <button
+              onClick={onOpenAdmin}
+              className="p-2 rounded-full bg-white/[0.08] text-white border border-white/20 active:scale-95 transition-all"
+              title="Панель мастера"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-white" />
+            </button>
+          )}
         </div>
 
       </div>

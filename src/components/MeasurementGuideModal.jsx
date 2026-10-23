@@ -26,11 +26,11 @@ export function MeasurementGuideModal({ onClose }) {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      {/* Modal with plenty of top clearance from Telegram HUD (mt-20 sm:mt-0) */}
-      <div className="relative w-full max-w-md bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.08] shadow-2xl p-4 sm:p-5 text-neutral-200 z-10 max-h-[85vh] overflow-y-auto no-scrollbar space-y-4 mt-20 sm:mt-0">
+      {/* Clean centered modal */}
+      <div className="relative w-full max-w-md bg-[#0d0e14] rounded-2xl border border-white/[0.08] shadow-2xl p-4 sm:p-5 text-neutral-200 z-10 max-h-[88vh] overflow-y-auto space-y-4">
         
         {/* Header */}
         <div className="flex items-center justify-between pb-2 border-b border-white/[0.04]">

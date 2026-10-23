@@ -84,7 +84,7 @@ export function ItemCard({
           {item.measurements && (
             <div className="absolute bottom-2 left-2 right-2 pointer-events-none">
               <div className="bg-black/80 backdrop-blur-md rounded-xl py-1 px-2.5 border border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-neutral-300">
-                <span className="text-amber-400 font-bold">Мерки:</span>
+                <span className={`${currentTheme.accentText || 'text-neutral-300'} font-bold`}>Мерки:</span>
                 <div className="flex items-center gap-2">
                   {item.measurements.waist && <span>П: <strong className="text-white">{safeVal(item.measurements.waist)}</strong></span>}
                   {item.measurements.outseam && <span>Д: <strong className="text-white">{safeVal(item.measurements.outseam)}</strong></span>}
@@ -97,7 +97,7 @@ export function ItemCard({
 
         <div className="p-3 flex items-center justify-between gap-3">
           <div>
-            <h3 className="font-bold text-neutral-100 text-sm leading-snug group-hover:text-amber-300 transition-colors">
+            <h3 className={`font-bold text-neutral-100 text-sm leading-snug ${currentTheme.accentTextHover || 'group-hover:text-white'} transition-colors`}>
               {item.title}
             </h3>
             <p className="text-[10px] text-neutral-400 font-mono mt-0.5">
@@ -108,7 +108,7 @@ export function ItemCard({
             <span className="text-sm font-bold text-white font-mono block">
               {formatPrice()}
             </span>
-            <span className="text-[10px] text-amber-400 font-mono">
+            <span className={`text-[10px] ${currentTheme.accentText || 'text-neutral-400'} font-mono`}>
               Открыть →
             </span>
           </div>
@@ -141,7 +141,7 @@ export function ItemCard({
             isAvailable 
               ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' 
               : isCustom 
-              ? 'bg-amber-950/90 text-amber-300 border-amber-500/50'
+              ? 'bg-neutral-900/90 text-neutral-300 border-white/20'
               : 'bg-neutral-900/90 text-neutral-400 border-neutral-700/50'
           }`}>
             {isAvailable ? 'В наличии' : 'Под заказ'}
@@ -155,7 +155,7 @@ export function ItemCard({
               e.stopPropagation();
               onEdit(item);
             }}
-            className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-amber-500 text-black shadow-lg active:scale-90"
+            className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-white/[0.15] text-white backdrop-blur-md shadow-lg active:scale-90"
             title="Редактировать"
           >
             <Edit3 className="w-3 h-3" />
@@ -166,7 +166,7 @@ export function ItemCard({
         {item.measurements && item.measurements.waist && (
           <div className="absolute bottom-1.5 left-1.5 right-1.5 pointer-events-none">
             <div className="bg-black/75 backdrop-blur-md rounded-lg py-0.5 px-1.5 border border-white/[0.08] text-[9px] font-mono text-neutral-300 flex items-center justify-between">
-              <span className="text-amber-400">П: {safeVal(item.measurements.waist)}</span>
+              <span className={currentTheme.accentText || 'text-neutral-300'}>П: {safeVal(item.measurements.waist)}</span>
               {item.measurements.outseam && <span>Д: {safeVal(item.measurements.outseam)}</span>}
               {item.measurements.legOpening && <span>Низ: {safeVal(item.measurements.legOpening)}</span>}
             </div>
@@ -176,7 +176,7 @@ export function ItemCard({
 
       <div className="p-2.5 flex flex-col justify-between flex-grow gap-1">
         <div>
-          <h3 className="font-semibold text-neutral-100 text-xs sm:text-sm line-clamp-1 group-hover:text-amber-300 transition-colors">
+          <h3 className={`font-semibold text-neutral-100 text-xs sm:text-sm line-clamp-1 ${currentTheme.accentTextHover || 'group-hover:text-white'} transition-colors`}>
             {item.title}
           </h3>
           <p className="text-[9px] text-neutral-400 font-mono line-clamp-1 mt-0.5">
@@ -188,7 +188,7 @@ export function ItemCard({
           <span className="text-xs sm:text-sm font-bold text-white font-mono">
             {formatPrice()}
           </span>
-          <span className="text-[9px] text-amber-400 font-mono">
+          <span className={`text-[9px] ${currentTheme.accentText || 'text-neutral-400'} font-mono`}>
             Мерки →
           </span>
         </div>

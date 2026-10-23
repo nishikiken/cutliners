@@ -55,14 +55,14 @@ export function ItemDetailModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      {/* Modal with top clearance from Telegram HUD (mt-20 sm:mt-0) */}
-      <div className="relative w-full max-w-md bg-[#0c0d12] rounded-t-3xl sm:rounded-3xl border border-white/[0.06] shadow-2xl max-h-[85vh] overflow-y-auto no-scrollbar z-10 flex flex-col text-neutral-200 mt-20 sm:mt-0">
+      {/* Modal centered on screen with rounded-2xl */}
+      <div className="relative w-full max-w-md bg-[#0d0e14] rounded-2xl border border-white/[0.08] shadow-2xl max-h-[88vh] overflow-y-auto z-10 flex flex-col text-neutral-200">
         
         {/* Mobile Pull Handle & Close Button */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-2 bg-[#0c0d12]/95 backdrop-blur-md border-b border-white/[0.04]">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-2.5 bg-[#0d0e14]/95 backdrop-blur-md border-b border-white/[0.04]">
           <span className="text-[10px] font-mono text-neutral-400">
             {item.title}
           </span>
@@ -195,11 +195,11 @@ export function ItemDetailModal({
                 href={getTelegramUrl('peretonirovan')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] active:scale-[0.99] text-white text-xs flex flex-col items-center justify-center border border-white/[0.06] transition-all text-center"
+                className="py-2.5 px-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] active:scale-[0.99] text-white text-xs flex flex-col items-center justify-center border border-white/[0.05] hover:border-white/[0.15] transition-all text-center"
               >
                 <div className="flex items-center gap-1 text-sky-400 font-bold">
                   <Send className="w-3 h-3" />
-                  <span>Nishiki</span>
+                  <span>13</span>
                 </div>
                 <span className="text-[8px] text-neutral-400">@peretonirovan</span>
               </a>
@@ -208,11 +208,11 @@ export function ItemDetailModal({
                 href={getTelegramUrl('Noria000')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] active:scale-[0.99] text-white text-xs flex flex-col items-center justify-center border border-white/[0.06] transition-all text-center"
+                className="py-2.5 px-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] active:scale-[0.99] text-white text-xs flex flex-col items-center justify-center border border-white/[0.05] hover:border-white/[0.15] transition-all text-center"
               >
                 <div className="flex items-center gap-1 text-sky-400 font-bold">
                   <Send className="w-3 h-3" />
-                  <span>Vibe Code</span>
+                  <span>nishikiken</span>
                 </div>
                 <span className="text-[8px] text-neutral-400">@Noria000</span>
               </a>

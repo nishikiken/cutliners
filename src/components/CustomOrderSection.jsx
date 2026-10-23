@@ -2,13 +2,13 @@ import React from 'react';
 import { Scissors, Send } from 'lucide-react';
 
 export function CustomOrderSection({ onOpenGuide }) {
-  // Two direct Telegram contacts for Nishiki and Vibe Code
-  const nishikiTelegramUrl = `https://t.me/peretonirovan?text=${encodeURIComponent(
-    'Здравствуйте, Nishiki! Хочу обсудить индивидуальный перешив джинс / одежды в CUTLINERS.'
+  // Two direct Telegram contacts for 13 and nishikiken
+  const master13TelegramUrl = `https://t.me/peretonirovan?text=${encodeURIComponent(
+    'Здравствуйте, 13! Хочу обсудить индивидуальный перешив джинс / одежды в CUTLINERS.'
   )}`;
 
-  const vibeCodeTelegramUrl = `https://t.me/Noria000?text=${encodeURIComponent(
-    'Здравствуйте, Vibe Code! Хочу обсудить индивидуальный перешив джинс / одежды в CUTLINERS.'
+  const nishikikenTelegramUrl = `https://t.me/Noria000?text=${encodeURIComponent(
+    'Здравствуйте, nishikiken! Хочу обсудить индивидуальный перешив джинс / одежды в CUTLINERS.'
   )}`;
 
   return (
@@ -48,16 +48,16 @@ export function CustomOrderSection({ onOpenGuide }) {
           </p>
         </div>
 
-        {/* Dual Master Action Buttons (Nishiki & Vibe Code) */}
+        {/* Dual Master Action Buttons (13 & nishikiken) */}
         <div className="space-y-2 pt-1 font-mono">
           <div className="text-[9px] uppercase tracking-wider text-neutral-500">
             Выбери мастера для связи в Telegram:
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {/* Master 1: Nishiki */}
+            {/* Master 1: 13 */}
             <a
-              href={nishikiTelegramUrl}
+              href={master13TelegramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="py-2.5 px-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] active:scale-[0.99] text-white text-xs flex items-center justify-between border border-white/[0.05] hover:border-white/[0.15] transition-all"
@@ -65,16 +65,16 @@ export function CustomOrderSection({ onOpenGuide }) {
               <div className="flex items-center gap-2">
                 <Send className="w-3.5 h-3.5 text-sky-400" />
                 <div className="text-left">
-                  <div className="font-semibold leading-tight">Nishiki</div>
+                  <div className="font-semibold leading-tight">13</div>
                   <div className="text-[9px] text-neutral-400">@peretonirovan</div>
                 </div>
               </div>
               <span className="text-[10px] text-neutral-400">Написать →</span>
             </a>
 
-            {/* Master 2: Vibe Code */}
+            {/* Master 2: nishikiken */}
             <a
-              href={vibeCodeTelegramUrl}
+              href={nishikikenTelegramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="py-2.5 px-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] active:scale-[0.99] text-white text-xs flex items-center justify-between border border-white/[0.05] hover:border-white/[0.15] transition-all"
@@ -82,7 +82,7 @@ export function CustomOrderSection({ onOpenGuide }) {
               <div className="flex items-center gap-2">
                 <Send className="w-3.5 h-3.5 text-sky-400" />
                 <div className="text-left">
-                  <div className="font-semibold leading-tight">Vibe Code</div>
+                  <div className="font-semibold leading-tight">nishikiken</div>
                   <div className="text-[9px] text-neutral-400">@Noria000</div>
                 </div>
               </div>
@@ -94,7 +94,7 @@ export function CustomOrderSection({ onOpenGuide }) {
             onClick={onOpenGuide}
             className="w-full py-2 text-center text-[10px] text-neutral-400 hover:text-white underline font-mono flex items-center justify-center gap-1 pt-1"
           >
-            <Scissors className="w-3 h-3 text-amber-400" />
+            <Scissors className="w-3 h-3 text-neutral-400" />
             <span>Как правильно снять свои мерки для пошива</span>
           </button>
         </div>

@@ -132,117 +132,226 @@ export function PumpkinTransparent({ className = 'w-7 h-7' }) {
   );
 }
 
-// 4. Stylish Winter Snowman (100% Transparent Background)
-export function SnowmanTransparent({ className = 'w-7 h-7' }) {
+// 4. Stylish Winter Snowman with cute snowball paws/feet (100% Transparent Background)
+export function SnowmanTransparent({ className = 'w-8 h-9' }) {
   return (
-    <svg className={className} viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Bottom snowball */}
-      <circle cx="50" cy="74" r="26" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1.2" filter="drop-shadow(0 0 8px rgba(56,189,248,0.3))" />
-      {/* Coal buttons */}
-      <circle cx="50" cy="68" r="2" fill="#0f172a" />
-      <circle cx="50" cy="76" r="2" fill="#0f172a" />
-      <circle cx="50" cy="84" r="2" fill="#0f172a" />
+    <svg className={className} viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Two cute snowball feet / paws at the base */}
+      <circle cx="35" cy="96" r="10" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1" filter="drop-shadow(0 2px 4px rgba(56,189,248,0.25))" />
+      <circle cx="65" cy="96" r="10" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1" filter="drop-shadow(0 2px 4px rgba(56,189,248,0.25))" />
 
-      {/* Red cozy scarf */}
-      <path d="M 36 49 Q 50 54 64 49 L 66 54 Q 50 59 34 54 Z" fill="#e11d48" />
-      <rect x="54" y="52" width="7" height="18" rx="2" fill="#e11d48" transform="rotate(10 54 52)" />
+      {/* Main bottom snowball */}
+      <circle cx="50" cy="72" r="25" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1.2" filter="drop-shadow(0 0 8px rgba(56,189,248,0.3))" />
+      
+      {/* Coal buttons on belly */}
+      <circle cx="50" cy="65" r="2.2" fill="#0f172a" />
+      <circle cx="50" cy="74" r="2.2" fill="#0f172a" />
+      <circle cx="50" cy="83" r="2.2" fill="#0f172a" />
+
+      {/* Cozy red scarf */}
+      <path d="M 35 48 Q 50 53 65 48 L 67 53 Q 50 58 33 53 Z" fill="#e11d48" />
+      <rect x="55" y="50" width="7" height="19" rx="2" fill="#e11d48" transform="rotate(12 55 50)" />
+      {/* Scarf fringes */}
+      <line x1="56" y1="69" x2="56" y2="72" stroke="#fb7185" strokeWidth="1" />
+      <line x1="59" y1="69" x2="59" y2="72" stroke="#fb7185" strokeWidth="1" />
+      <line x1="62" y1="69" x2="62" y2="72" stroke="#fb7185" strokeWidth="1" />
 
       {/* Head snowball */}
-      <circle cx="50" cy="36" r="17" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1" />
+      <circle cx="50" cy="35" r="16" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1.2" />
 
-      {/* Coal eyes & smile */}
-      <circle cx="44" cy="33" r="1.8" fill="#0f172a" />
-      <circle cx="56" cy="33" r="1.8" fill="#0f172a" />
-      <circle cx="44" cy="42" r="1" fill="#0f172a" />
-      <circle cx="47" cy="44" r="1" fill="#0f172a" />
-      <circle cx="50" cy="44.5" r="1" fill="#0f172a" />
-      <circle cx="53" cy="44" r="1" fill="#0f172a" />
-      <circle cx="56" cy="42" r="1" fill="#0f172a" />
+      {/* Coal eyes & joyful smile */}
+      <circle cx="44" cy="32" r="1.8" fill="#0f172a" />
+      <circle cx="56" cy="32" r="1.8" fill="#0f172a" />
+      <circle cx="43" cy="41" r="1" fill="#0f172a" />
+      <circle cx="46" cy="43" r="1" fill="#0f172a" />
+      <circle cx="50" cy="44" r="1" fill="#0f172a" />
+      <circle cx="54" cy="43" r="1" fill="#0f172a" />
+      <circle cx="57" cy="41" r="1" fill="#0f172a" />
 
-      {/* Orange carrot nose */}
-      <polygon points="50,36 62,38 50,39" fill="#f97316" />
+      {/* Orange carrot nose pointing right */}
+      <polygon points="50,35 64,37 50,39" fill="#f97316" />
 
-      {/* Black Top Hat */}
-      <rect x="36" y="19" width="28" height="3" rx="1.5" fill="#0f172a" />
-      <rect x="41" y="7" width="18" height="13" rx="2" fill="#1e293b" />
-      <rect x="41" y="16" width="18" height="3" fill="#e11d48" />
+      {/* Black gentleman top hat with red ribbon */}
+      <rect x="34" y="19" width="32" height="3" rx="1.5" fill="#0f172a" />
+      <rect x="40" y="6" width="20" height="14" rx="2" fill="#1e293b" />
+      <rect x="40" y="16" width="20" height="3" fill="#e11d48" />
     </svg>
   );
 }
 
-// 5. Traditional Easter Eggs & Bunny Ears (100% Transparent Background)
-export function EasterEggTransparent({ className = 'w-7 h-7' }) {
+// 5. Sacred & Beautiful Easter Egg (Pysanka / Faberge ornament with Willow sprig)
+export function EasterEggTransparent({ className = 'w-8 h-8' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Pink/white Bunny Ears in background */}
-      <ellipse cx="40" cy="22" rx="6" ry="16" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1" transform="rotate(-12 40 22)" />
-      <ellipse cx="40" cy="22" rx="3.5" ry="11" fill="#fbcfe8" transform="rotate(-12 40 22)" />
-      <ellipse cx="60" cy="22" rx="6" ry="16" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1" transform="rotate(12 60 22)" />
-      <ellipse cx="60" cy="22" rx="3.5" ry="11" fill="#fbcfe8" transform="rotate(12 60 22)" />
+      <defs>
+        <radialGradient id="easterEggGrad" cx="40%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="#fef08a" />
+          <stop offset="45%" stopColor="#fbbf24" />
+          <stop offset="100%" stopColor="#d97706" />
+        </radialGradient>
+      </defs>
 
-      {/* Golden/Amber Painted Easter Egg */}
-      <ellipse cx="42" cy="65" rx="18" ry="24" fill="#fbbf24" stroke="#d97706" strokeWidth="1.2" transform="rotate(-15 42 65)" />
-      <path d="M 28 65 Q 42 55 56 65" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="2,2" fill="none" />
-      <circle cx="42" cy="65" r="4" fill="#ffffff" opacity="0.9" />
+      {/* Sacred Willow sprig with soft fluffy buds curving behind egg */}
+      <path d="M 22 85 Q 26 50 48 18" stroke="#78350f" strokeWidth="2" strokeLinecap="round" />
+      {/* Willow buds */}
+      <ellipse cx="28" cy="65" rx="3.5" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="0.8" transform="rotate(-30 28 65)" />
+      <ellipse cx="36" cy="46" rx="3.5" ry="6" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="0.8" transform="rotate(-30 36 46)" />
+      <ellipse cx="45" cy="28" rx="3" ry="5.5" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="0.8" transform="rotate(-25 45 28)" />
 
-      {/* Sky Blue Painted Easter Egg in foreground */}
-      <ellipse cx="62" cy="67" rx="17" ry="23" fill="#38bdf8" stroke="#0284c7" strokeWidth="1.2" transform="rotate(15 62 67)" />
-      <path d="M 48 67 Q 62 57 76 67" stroke="#ffffff" strokeWidth="1.5" fill="none" />
-      <circle cx="62" cy="67" r="3.5" fill="#fef08a" />
+      {/* Main Ornate Golden Easter Egg */}
+      <ellipse cx="56" cy="56" rx="28" ry="36" fill="url(#easterEggGrad)" filter="drop-shadow(0 2px 8px rgba(217,119,6,0.45))" />
+      
+      {/* Intricate Sacred Lace Filigree */}
+      {/* Upper arch */}
+      <path d="M 33 46 Q 56 34 79 46" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="2,2" fill="none" opacity="0.9" />
+      {/* Center belt with sacred cross star */}
+      <path d="M 28 56 Q 56 46 84 56" stroke="#ffffff" strokeWidth="1.8" fill="none" opacity="0.95" />
+      <path d="M 28 62 Q 56 52 84 62" stroke="#ffffff" strokeWidth="1.8" fill="none" opacity="0.95" />
+      {/* Cross star medallion */}
+      <g transform="translate(56, 56)">
+        <polygon points="0,-7 2,-2 7,0 2,2 0,7 -2,2 -7,0 -2,-2" fill="#ffffff" />
+        <circle cx="0" cy="0" r="1.5" fill="#d97706" />
+      </g>
+      {/* Lower arch */}
+      <path d="M 34 68 Q 56 78 78 68" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="2,2" fill="none" opacity="0.9" />
+
+      {/* Tiny decorative pearls */}
+      <circle cx="44" cy="42" r="1.5" fill="#ffffff" />
+      <circle cx="68" cy="42" r="1.5" fill="#ffffff" />
+      <circle cx="44" cy="72" r="1.5" fill="#ffffff" />
+      <circle cx="68" cy="72" r="1.5" fill="#ffffff" />
     </svg>
   );
 }
 
-// 6. Velvet Dark Rose for Valentine (100% Transparent Background)
-export function RoseTransparent({ className = 'w-7 h-7' }) {
+// 6. Romantic Heart with Blooming Velvet Rose (Valentine's Day)
+export function RoseTransparent({ className = 'w-8 h-8' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Green Leaves */}
-      <path d="M 50 65 Q 35 75 25 70 Q 35 60 50 65" fill="#15803d" />
-      <path d="M 50 65 Q 65 75 75 70 Q 65 60 50 65" fill="#15803d" />
-      {/* Rose Petals */}
-      <circle cx="50" cy="45" r="22" fill="#9f1239" />
-      <ellipse cx="50" cy="44" rx="17" ry="16" fill="#be123c" />
-      <ellipse cx="48" cy="43" rx="12" ry="11" fill="#e11d48" />
-      <path d="M 44 42 Q 50 35 56 42 Q 50 50 44 42" fill="#f43f5e" />
+      <defs>
+        <radialGradient id="heartGrad" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#fb7185" />
+          <stop offset="40%" stopColor="#e11d48" />
+          <stop offset="100%" stopColor="#881337" />
+        </radialGradient>
+        <radialGradient id="roseBudGrad" cx="40%" cy="35%" r="60%">
+          <stop offset="0%" stopColor="#f43f5e" />
+          <stop offset="60%" stopColor="#be123c" />
+          <stop offset="100%" stopColor="#4c0519" />
+        </radialGradient>
+      </defs>
+
+      {/* Elegant Stylized Romantic Heart in background */}
+      <path
+        d="M 50 82 
+           C 24 64, 12 46, 18 28 
+           C 23 14, 38 14, 48 24 
+           L 50 26 L 52 24 
+           C 62 14, 77 14, 82 28 
+           C 88 46, 76 64, 50 82 Z"
+        fill="url(#heartGrad)"
+        filter="drop-shadow(0 2px 8px rgba(225,29,72,0.4))"
+      />
+
+      {/* Golden artisan seam thread curving across the heart */}
+      <path
+        d="M 24 38 Q 50 48 76 34"
+        stroke="#fef08a"
+        strokeWidth="1.2"
+        strokeDasharray="2,2"
+        fill="none"
+        opacity="0.8"
+      />
+
+      {/* Blooming Velvet Rose nestled at the center-right */}
+      <g transform="translate(52, 42)">
+        {/* Rose leaves */}
+        <path d="M 0 0 Q -12 -6 -16 4 Q -8 8 0 0" fill="#15803d" />
+        <path d="M 4 8 Q 14 16 20 8 Q 12 2 4 8" fill="#15803d" />
+
+        {/* Rose Petals cluster */}
+        <circle cx="0" cy="0" r="14" fill="url(#roseBudGrad)" stroke="#fda4af" strokeWidth="0.8" />
+        <ellipse cx="-1" cy="-1" rx="9" ry="8" fill="#e11d48" />
+        <path d="M -5 -3 Q 0 -8 5 -3 Q 0 4 -5 -3" fill="#f43f5e" />
+        <circle cx="0" cy="-1" r="3" fill="#ffe4e6" />
+      </g>
     </svg>
   );
 }
 
-// 7. Radiant Golden Summer Sun & Palm (100% Transparent Background, replaces emoji!)
+// 7. Clear & Aesthetic Summer Sunset with Twin Palm Trees (100% Transparent Background)
 export function SummerPalmTransparent({ className = 'w-8 h-8' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Golden Warm Sun */}
-      <circle cx="62" cy="42" r="22" fill="url(#summerSunGrad)" filter="drop-shadow(0 0 8px rgba(245,158,11,0.6))" />
-      {/* Palm Trunk */}
-      <path d="M 32 90 Q 42 60 52 38" stroke="#78350f" strokeWidth="4.5" strokeLinecap="round" />
-      {/* Curved Palm Fronds */}
-      <path d="M 52 38 Q 24 32 12 50" stroke="#15803d" strokeWidth="3" strokeLinecap="round" />
-      <path d="M 52 38 Q 36 18 30 8" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" />
-      <path d="M 52 38 Q 66 16 80 18" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" />
-      <path d="M 52 38 Q 78 32 90 44" stroke="#15803d" strokeWidth="3" strokeLinecap="round" />
-      <path d="M 52 38 Q 62 52 66 66" stroke="#166534" strokeWidth="2.5" strokeLinecap="round" />
       <defs>
-        <radialGradient id="summerSunGrad" cx="45%" cy="45%" r="55%">
+        <radialGradient id="sunsetDiscGrad" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#fef08a" />
-          <stop offset="65%" stopColor="#f59e0b" />
+          <stop offset="55%" stopColor="#f59e0b" />
           <stop offset="100%" stopColor="#ea580c" />
         </radialGradient>
       </defs>
+
+      {/* Radiant Sun Disc */}
+      <circle cx="50" cy="48" r="32" fill="url(#sunsetDiscGrad)" filter="drop-shadow(0 0 10px rgba(245,158,11,0.5))" />
+
+      {/* Horizontal Horizon Sunset Stripes across bottom half of sun */}
+      <rect x="22" y="56" width="56" height="2" fill="#08080c" opacity="0.6" rx="1" />
+      <rect x="26" y="62" width="48" height="2.5" fill="#08080c" opacity="0.75" rx="1" />
+      <rect x="32" y="68" width="36" height="3" fill="#08080c" opacity="0.9" rx="1" />
+
+      {/* Silhouette of Twin Tropical Palm Trees */}
+      {/* Tall Palm Trunk */}
+      <path d="M 38 84 Q 44 60 54 36" stroke="#1c1917" strokeWidth="4" strokeLinecap="round" />
+      {/* Tall Palm Fronds */}
+      <path d="M 54 36 Q 30 28 18 42" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 54 36 Q 42 16 38 8" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 54 36 Q 66 16 80 18" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 54 36 Q 78 30 88 42" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 54 36 Q 64 52 68 64" stroke="#1c1917" strokeWidth="2.5" strokeLinecap="round" />
+
+      {/* Smaller companion palm */}
+      <path d="M 32 84 Q 35 68 32 54" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 32 54 Q 18 48 10 58" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
+      <path d="M 32 54 Q 24 38 20 32" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
+      <path d="M 32 54 Q 44 42 50 44" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
 
-// 8. Classic Artisan Shears (100% Transparent Background)
-export function ScissorsArtisanTransparent({ className = 'w-7 h-7' }) {
+// 8. Classic Sartorial Atelier Emblem: Crossed Tailor Shears & Needle with Thread (100% Transparent Background)
+export function ScissorsArtisanTransparent({ className = 'w-8 h-8' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 26 74 Q 16 64 26 54 Q 36 64 26 74 Z" stroke="#cbd5e1" strokeWidth="3.5" />
-      <path d="M 44 84 Q 34 94 24 84 Q 34 74 44 84 Z" stroke="#cbd5e1" strokeWidth="3.5" />
-      <line x1="28" y1="62" x2="78" y2="22" stroke="#e2e8f0" strokeWidth="4" strokeLinecap="round" />
-      <line x1="38" y1="80" x2="82" y2="34" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="50" cy="50" r="3" fill="#f59e0b" />
+      {/* Refined silver & platinum tailoring needle with thread loop */}
+      <path
+        d="M 18 82 Q 40 50 78 22"
+        stroke="#e2e8f0"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      {/* Needle eye */}
+      <ellipse cx="22" cy="78" rx="2" ry="4" fill="#08080c" stroke="#e2e8f0" strokeWidth="1" transform="rotate(-40 22 78)" />
+      {/* Looping artisan thread */}
+      <path
+        d="M 22 78 C 10 88, 14 96, 26 94 C 36 92, 40 76, 50 68"
+        stroke="#94a3b8"
+        strokeWidth="1.2"
+        strokeDasharray="2,2"
+        fill="none"
+        opacity="0.8"
+      />
+
+      {/* Crossed Antique Tailoring Shears */}
+      {/* Handle ring 1 */}
+      <circle cx="30" cy="30" r="11" stroke="#e2e8f0" strokeWidth="2.5" />
+      {/* Handle ring 2 */}
+      <circle cx="68" cy="72" r="11" stroke="#e2e8f0" strokeWidth="2.5" />
+      {/* Blade 1 */}
+      <path d="M 38 38 L 84 84" stroke="#f8fafc" strokeWidth="3" strokeLinecap="round" />
+      {/* Blade 2 */}
+      <path d="M 60 64 L 16 20" stroke="#cbd5e1" strokeWidth="3" strokeLinecap="round" />
+      {/* Center Pivot Screw in muted brass */}
+      <circle cx="50" cy="50" r="3" fill="#cbd5e1" stroke="#475569" strokeWidth="1" />
     </svg>
   );
 }

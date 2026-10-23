@@ -28,7 +28,7 @@ export function BottomNav({
           <span className="text-[11px] tracking-wide">Замеры</span>
         </button>
 
-        {/* 3. Order (Opens Master Selector: Nishiki or Vibe Code) */}
+        {/* 3. Order (Opens Master Selector: 13 or nishikiken) */}
         <button
           onClick={onOpenOrderModal}
           className="flex flex-col items-center justify-center py-1.5 text-neutral-400 hover:text-white active:scale-95 transition-transform"
