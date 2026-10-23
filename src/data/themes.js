@@ -4,13 +4,28 @@ export const THEMES = {
     name: 'Halloween Spooky Drop',
     titleRu: 'Хэллоуин (Тыквы, Кот, Reese\'s)',
     accentColor: '#ff7700',
-    accentSecondary: '#a855f7',
+    accentSecondary: '#f59e0b',
     badgeText: 'HALLOWEEN DROP 🎃',
-    bgGradient: 'from-[#0b0810] via-[#120a1c] to-[#08080c]',
-    cardBorder: 'border-orange-500/20 hover:border-orange-500/50',
-    glowColor: 'rgba(255, 119, 0, 0.25)',
-    ambientSoundText: 'Ведьмины сумерки & Шелест тканей',
-    holidayPhrase: 'Сшито вручную в самый мрачный сезон года'
+    bgGradient: 'from-[#0a0810] via-[#120a1c] to-[#08080c]',
+    cardBorder: 'border-orange-500/25 hover:border-orange-500/60',
+    glowColor: 'rgba(255, 119, 0, 0.3)',
+    ambientSoundText: 'Хэллоуинский релиз • Reese\'s & Spooky Vibes',
+    holidayPhrase: 'Сшито вручную в самый мрачный и атмосферный сезон года',
+    icon: '🎃'
+  },
+  easter: {
+    id: 'easter',
+    name: 'Светлая Пасха',
+    titleRu: 'Светлая Пасха (Яйца, Корзинка, Кролик)',
+    accentColor: '#f59e0b',
+    accentSecondary: '#38bdf8',
+    badgeText: 'СВЕТЛАЯ ПАСХА 🌿',
+    bgGradient: 'from-[#0b0c10] via-[#11161d] to-[#08090d]',
+    cardBorder: 'border-amber-400/25 hover:border-amber-400/60',
+    glowColor: 'rgba(245, 158, 11, 0.25)',
+    ambientSoundText: 'Пасхальный релиз • Весеннее тепло и обновление',
+    holidayPhrase: 'Светлый праздник Пасхи: расписные крашенки, весенняя корзинка и новые надежные вещи',
+    icon: '🐣'
   },
   newyear: {
     id: 'newyear',
@@ -18,51 +33,41 @@ export const THEMES = {
     titleRu: 'Новый год и Рождество',
     accentColor: '#38bdf8',
     accentSecondary: '#fbbf24',
-    badgeText: 'WINTER SOLSTICE ❄️',
+    badgeText: 'НОВОГОДНИЙ ДРОП ❄️',
     bgGradient: 'from-[#060e14] via-[#09151e] to-[#07090d]',
-    cardBorder: 'border-sky-500/20 hover:border-sky-400/50',
+    cardBorder: 'border-sky-500/25 hover:border-sky-400/60',
     glowColor: 'rgba(56, 189, 248, 0.25)',
-    ambientSoundText: 'Холодное сырое полотно & Морозный иней',
-    holidayPhrase: 'Зимний релиз из самого плотного сырого денима'
-  },
-  easter: {
-    id: 'easter',
-    name: 'Gothic Easter',
-    titleRu: 'Пасха (Готические яйца и возрождение)',
-    accentColor: '#c084fc',
-    accentSecondary: '#facc15',
-    badgeText: 'DARK REBIRTH 🥚',
-    bgGradient: 'from-[#0d0914] via-[#150d22] to-[#08080c]',
-    cardBorder: 'border-purple-500/20 hover:border-purple-400/50',
-    glowColor: 'rgba(192, 132, 252, 0.25)',
-    ambientSoundText: 'Возрождение формы & Мистический шов',
-    holidayPhrase: 'Трансформация винтажного хлопка в новые силуэты'
+    ambientSoundText: 'Зимний релиз • Еловые ветви и морозный деним',
+    holidayPhrase: 'Зимний релиз из самого плотного японского сырого денима',
+    icon: '🎄'
   },
   summer: {
     id: 'summer',
-    name: 'Summer Dusk Season',
+    name: 'Summer Season Opening',
     titleRu: 'Открытие летнего сезона',
     accentColor: '#f97316',
     accentSecondary: '#ec4899',
     badgeText: 'SUMMER DROP 🌅',
     bgGradient: 'from-[#140b0f] via-[#1f0e1a] to-[#0a070e]',
-    cardBorder: 'border-orange-500/20 hover:border-pink-500/50',
+    cardBorder: 'border-orange-500/25 hover:border-pink-500/60',
     glowColor: 'rgba(249, 115, 22, 0.25)',
-    ambientSoundText: 'Полуночный закат & Летний бриз',
-    holidayPhrase: 'Облегченные силуэты, винтажные варки и свобода кроя'
+    ambientSoundText: 'Летний сезон • Свободный крой и закатный бриз',
+    holidayPhrase: 'Облегченные силуэты, винтажные варки и свобода кроя на теплое время',
+    icon: '🌴'
   },
   valentines: {
     id: 'valentines',
-    name: 'Valentine Noir',
-    titleRu: 'День всех влюбленных',
+    name: 'День всех влюбленных',
+    titleRu: 'День влюбленных (Розы и Сердца)',
     accentColor: '#f43f5e',
     accentSecondary: '#fb7185',
-    badgeText: 'BLOOD & THREADS 🖤',
+    badgeText: 'ROMANCE & THREADS 🖤',
     bgGradient: 'from-[#13070b] via-[#1c0812] to-[#080709]',
-    cardBorder: 'border-rose-500/20 hover:border-rose-400/50',
+    cardBorder: 'border-rose-500/25 hover:border-rose-400/60',
     glowColor: 'rgba(244, 63, 94, 0.25)',
-    ambientSoundText: 'Красная нить судьбы & Пронзенные сердца',
-    holidayPhrase: 'Любовь к ручному пошиву, деталям и вечным вещам'
+    ambientSoundText: 'Красная нить • Любовь к ручному пошиву',
+    holidayPhrase: 'Любовь к ручному ремеслу, деталям и вещам, которые служат годами',
+    icon: '❤️'
   },
   noir: {
     id: 'noir',
@@ -72,9 +77,10 @@ export const THEMES = {
     accentSecondary: '#ef4444',
     badgeText: 'ATELIER RAW ✂️',
     bgGradient: 'from-[#0a0b10] via-[#10121a] to-[#07070a]',
-    cardBorder: 'border-amber-500/20 hover:border-amber-400/50',
+    cardBorder: 'border-amber-500/25 hover:border-amber-400/60',
     glowColor: 'rgba(217, 119, 6, 0.25)',
-    ambientSoundText: 'Стук швейной машины & Медные заклепки',
-    holidayPhrase: 'Аутентичный пошив на заказ. Качественный японский деним.'
+    ambientSoundText: 'Стук швейной машины • Медные заклепки',
+    holidayPhrase: 'Аутентичный пошив на заказ. Качественный японский сырой деним.',
+    icon: '✂️'
   }
 };

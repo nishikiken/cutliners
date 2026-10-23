@@ -11,20 +11,20 @@ import { MeasurementGuideModal } from './components/MeasurementGuideModal';
 import { AdminModal } from './components/AdminModal';
 import { CustomOrderSection } from './components/CustomOrderSection';
 import { BottomNav } from './components/BottomNav';
-import { Scissors, Sparkles, Smartphone, Monitor, ShieldCheck, Heart } from 'lucide-react';
+import { Scissors, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function App() {
   // 1. Persistent Catalog items
   const [items, setItems] = useState(() => {
     try {
-      const saved = localStorage.getItem('cutliners_catalog_v1');
+      const saved = localStorage.getItem('cutliners_catalog_v2');
       return saved ? JSON.parse(saved) : INITIAL_ITEMS;
     } catch {
       return INITIAL_ITEMS;
     }
   });
 
-  // 2. Active Theme (Halloween by default as requested)
+  // 2. Active Theme (Halloween by default)
   const [currentThemeId, setCurrentThemeId] = useState(() => {
     return localStorage.getItem('cutliners_theme') || 'halloween';
   });
@@ -55,15 +55,14 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [editingItemFromCard, setEditingItemFromCard] = useState(null);
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' (2 columns) or 'list' (1 column)
   const [pinInput, setPinInput] = useState('');
   const [showPinPrompt, setShowPinPrompt] = useState(false);
-  const [isPhoneFrame, setIsPhoneFrame] = useState(false);
 
   // Sync to local storage
   useEffect(() => {
     try {
-      localStorage.setItem('cutliners_catalog_v1', JSON.stringify(items));
+      localStorage.setItem('cutliners_catalog_v2', JSON.stringify(items));
     } catch (e) {
       console.warn('LocalStorage limit reached for large photos', e);
     }
@@ -85,13 +84,11 @@ export default function App() {
 
   // Filter items
   const filteredItems = items.filter((item) => {
-    // Category filter
     let matchCat = true;
     if (selectedCategory === 'В наличии') matchCat = item.status === 'В наличии';
     else if (selectedCategory === 'Под заказ') matchCat = item.status === 'Под заказ';
     else if (selectedCategory !== 'Все') matchCat = item.category === selectedCategory;
 
-    // Search query
     let matchSearch = true;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -115,18 +112,16 @@ export default function App() {
   };
 
   const handleUnlockMaster = (pin) => {
-    // Default PIN: 777 or any master code
     if (pin === '777' || pin === '1312' || pin === 'admin') {
       setIsMasterMode(true);
       localStorage.setItem('cutliners_master_unlocked', 'true');
       setShowPinPrompt(false);
       setIsAdminOpen(true);
     } else {
-      alert('Неверный код доступа. Подсказка для создателей: 777');
+      alert('Неверный код доступа. Быстрый код для вас с другом: 777');
     }
   };
 
-  // Add / Edit / Delete items
   const handleSaveItem = (itemToSave) => {
     setItems((prev) => {
       const exists = prev.some((it) => it.id === itemToSave.id);
@@ -148,27 +143,8 @@ export default function App() {
   return (
     <div className={`min-h-screen bg-gradient-to-b ${currentTheme.bgGradient} text-neutral-200 flex flex-col items-center selection:bg-amber-500/30 selection:text-amber-200 transition-colors duration-500`}>
       
-      {/* Optional Desktop / Phone container switcher header indicator (for desktop preview testing) */}
-      <div className="hidden lg:flex fixed top-3 right-3 z-50 items-center gap-2 bg-neutral-900/90 border border-white/10 px-3 py-1.5 rounded-full text-xs font-mono text-neutral-400 backdrop-blur-md">
-        <span>Вид:</span>
-        <button
-          onClick={() => setIsPhoneFrame(false)}
-          className={`flex items-center gap-1 px-2 py-0.5 rounded-md ${!isPhoneFrame ? 'bg-amber-500/20 text-amber-300 font-bold' : 'hover:text-white'}`}
-        >
-          <Monitor className="w-3.5 h-3.5" />
-          <span>Адаптивный</span>
-        </button>
-        <button
-          onClick={() => setIsPhoneFrame(true)}
-          className={`flex items-center gap-1 px-2 py-0.5 rounded-md ${isPhoneFrame ? 'bg-amber-500/20 text-amber-300 font-bold' : 'hover:text-white'}`}
-        >
-          <Smartphone className="w-3.5 h-3.5" />
-          <span>Фрейм телефона</span>
-        </button>
-      </div>
-
-      {/* Main Container: optimized strictly for mobile phones */}
-      <div className={`w-full ${isPhoneFrame ? 'max-w-[420px] my-6 rounded-[38px] border-4 border-neutral-800 shadow-[0_0_60px_rgba(0,0,0,0.9)] overflow-hidden' : 'max-w-md sm:max-w-xl'} min-h-screen bg-[#08080c] relative flex flex-col pb-24 sm:pb-12 shadow-2xl transition-all`}>
+      {/* Mobile-first Container (Full width on phones, centered on wider screens) */}
+      <div className="w-full max-w-md min-h-screen bg-[#08080c] relative flex flex-col pb-24 shadow-2xl">
         
         {/* Subtle background noise texture */}
         <div className="absolute inset-0 bg-noise pointer-events-none opacity-40" />
@@ -180,7 +156,7 @@ export default function App() {
           <ThemeDecors themeId={currentThemeId} />
         )}
 
-        {/* App Header (Brand Plaque & Logo) */}
+        {/* App Header (Brand Plaque & Calligraphic Logo) */}
         <Header
           currentTheme={currentTheme}
           logoFont={logoFont}
@@ -189,53 +165,55 @@ export default function App() {
           isMasterMode={isMasterMode}
         />
 
-        {/* Content Area */}
-        <main className="relative z-10 px-4 py-4 space-y-5 flex-grow">
+        {/* Main Content */}
+        <main className="relative z-10 px-3.5 py-3 space-y-4 flex-grow">
           
           {/* Welcome Intro for Visitors */}
-          <div className="text-center pt-1 pb-1">
+          <div className="text-center pt-1 pb-0.5">
             <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-500">
               HANDCRAFTED BESPOKE DENIM
             </span>
-            <h2 className="text-sm font-medium text-neutral-300 mt-0.5 font-sans">
-              Шьем джинсы и одежду на заказ. Вручную, штучно, без компромиссов.
+            <h2 className="text-xs sm:text-sm font-medium text-neutral-300 mt-0.5 font-sans">
+              Шьем джинсы и одежду на заказ. Вручную, штучно, по вашим меркам.
             </h2>
           </div>
 
-          {/* Search & Category Filter Pills */}
+          {/* Search, View Mode Toggle & Category Filter Pills */}
           <CategoryFilter
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
             currentTheme={currentTheme}
+            viewMode={viewMode}
+            onToggleViewMode={() => setViewMode(prev => prev === 'grid' ? 'list' : 'grid')}
           />
 
-          {/* Master mode active alert badge */}
+          {/* Master mode active banner */}
           {isMasterMode && (
             <div className="p-2.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between text-xs font-mono">
-              <div className="flex items-center gap-2 text-amber-300">
+              <div className="flex items-center gap-1.5 text-amber-300">
                 <ShieldCheck className="w-4 h-4 text-amber-400" />
-                <span>Режим мастеров включен</span>
+                <span className="text-[11px] font-bold">Режим мастеров включен</span>
               </div>
               <button
                 onClick={() => setIsAdminOpen(true)}
-                className="text-[11px] underline text-amber-400 hover:text-amber-200"
+                className="text-[11px] text-amber-400 hover:underline"
               >
-                + Добавить вещь / Сменить тему
+                + Добавить вещь / Тема
               </button>
             </div>
           )}
 
-          {/* Catalog Items Grid (Optimized 1 column on small phones, 2 on tablet) */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between text-xs font-mono text-neutral-400 px-1">
+          {/* Product Catalog Grid (Clean 2-Column Mobile Grid or 1-Column Editorial) */}
+          <div className="space-y-2.5">
+            <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 px-1">
               <span>Каталог изделий</span>
               <span>{filteredItems.length} {filteredItems.length === 1 ? 'вещь' : 'вещей'}</span>
             </div>
 
             {filteredItems.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4">
+              <div className={viewMode === 'grid' ? 'grid grid-cols-2 gap-2.5' : 'grid grid-cols-1 gap-3.5'}>
                 {filteredItems.map((item) => (
                   <ItemCard
                     key={item.id}
@@ -243,15 +221,14 @@ export default function App() {
                     onSelect={(it) => setSelectedItem(it)}
                     currentTheme={currentTheme}
                     isMasterMode={isMasterMode}
-                    onEdit={(it) => {
-                      setIsAdminOpen(true);
-                    }}
+                    onEdit={() => setIsAdminOpen(true)}
+                    viewMode={viewMode}
                   />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 px-4 rounded-3xl bg-neutral-900/40 border border-white/5 space-y-2">
-                <p className="text-neutral-400 text-sm font-mono">По вашему запросу ничего не найдено</p>
+              <div className="text-center py-10 px-4 rounded-2xl bg-neutral-900/40 border border-white/5 space-y-2">
+                <p className="text-neutral-400 text-xs font-mono">Ничего не найдено</p>
                 <button
                   onClick={() => {
                     setSelectedCategory('Все');
@@ -272,18 +249,18 @@ export default function App() {
             currentTheme={currentTheme}
           />
 
-          {/* Footer Notes */}
-          <footer className="pt-6 pb-4 text-center space-y-2 font-mono text-neutral-500 text-[11px] border-t border-white/[0.06]">
+          {/* Mobile Footer */}
+          <footer className="pt-4 pb-2 text-center space-y-1.5 font-mono text-neutral-500 text-[10px] border-t border-white/[0.06]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
               <Scissors className="w-3.5 h-3.5 text-amber-400" />
-              <span className="font-bold tracking-widest text-neutral-300">CUTLINERS</span>
+              <span className="font-bold tracking-widest text-neutral-200">CUTLINERS</span>
               <span>• Raw Denim Atelier</span>
             </div>
-            <p className="text-[10px]">
-              Ручной крой • Персональные замеры • Японский и винтажный деним
+            <p className="text-neutral-500">
+              Ручной крой • Персональные замеры • Японский деним
             </p>
-            <div className="pt-1 text-[10px] text-neutral-600">
-              Текущая тема: <strong className="text-neutral-400">{currentTheme.titleRu}</strong>
+            <div className="text-neutral-600">
+              Активная тема: <strong className="text-neutral-400">{currentTheme.titleRu}</strong>
             </div>
           </footer>
 
@@ -332,7 +309,7 @@ export default function App() {
         onImportCatalog={handleImportCatalog}
       />
 
-      {/* PIN Prompt Modal for Master Mode (for Him and His Friend) */}
+      {/* PIN Prompt Modal for Master Mode */}
       {showPinPrompt && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
           <div className="w-full max-w-xs bg-[#0e0f16] rounded-3xl border border-amber-500/30 p-5 text-neutral-200 font-mono space-y-4 shadow-2xl">
@@ -350,7 +327,7 @@ export default function App() {
             </div>
 
             <p className="text-[11px] text-neutral-400 font-sans">
-              Вход в мастерскую для добавления вещей, замеров и смены тем оформления.
+              Вход для вас с другом: добавление вещей, точные замеры и переключение тем.
             </p>
 
             <form
