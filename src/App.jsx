@@ -223,8 +223,8 @@ export default function App() {
           {/* Custom Rework Tailoring Section with Intellectual & Visual Intermission Break */}
           <CustomOrderSection onOpenGuide={() => setIsGuideOpen(true)} />
 
-          {/* Minimalist Footer with discreet master trigger */}
-          <footer className="pt-4 pb-1 text-center space-y-1 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
+          {/* Minimalist Footer with discreet master trigger - shifted lower with elegant spacing */}
+          <footer className="mt-10 pt-8 pb-2 text-center space-y-1.5 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
               <button 
                 onClick={handleOpenAdmin}
@@ -241,8 +241,10 @@ export default function App() {
             </p>
           </footer>
 
-          {/* Atmospheric Thematic Ground Silhouette (Tombstones, Pines, Dunes, etc.) anchors the very bottom of the page */}
-          <FooterThemeGround themeId={currentThemeId} />
+          {/* Atmospheric Thematic Ground Silhouette anchors the very bottom edge of the page */}
+          <div className="mt-3 -mx-3">
+            <FooterThemeGround themeId={currentThemeId} />
+          </div>
 
         </main>
 
