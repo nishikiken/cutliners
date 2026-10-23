@@ -10,6 +10,7 @@ import { MeasurementGuideModal } from './components/MeasurementGuideModal';
 import { MasterOrderModal } from './components/MasterOrderModal';
 import { AdminModal } from './components/AdminModal';
 import { CustomOrderSection } from './components/CustomOrderSection';
+import { FooterThemeGround } from './components/FooterThemeGround';
 import { BottomNav } from './components/BottomNav';
 import { Scissors, ShieldCheck } from 'lucide-react';
 
@@ -238,6 +239,9 @@ export default function App() {
           {/* Custom Rework Tailoring Section with Intellectual & Visual Intermission Break */}
           <CustomOrderSection onOpenGuide={() => setIsGuideOpen(true)} />
 
+          {/* Atmospheric Thematic Ground Silhouette (Tombstones, Pines, Dunes, etc.) */}
+          <FooterThemeGround themeId={currentThemeId} />
+
           {/* Minimalist Footer with discreet master trigger */}
           <footer className="pt-3 pb-2 text-center space-y-1 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
@@ -303,7 +307,7 @@ export default function App() {
 
       {/* PIN Prompt Modal (Discreet, zero leaked codes, no hints) */}
       {showPinPrompt && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex flex-col justify-start sm:justify-center items-center pt-24 pb-8 px-4">
           <div className="w-full max-w-xs bg-[#0d0e14] rounded-2xl border border-white/[0.08] p-5 text-neutral-200 font-mono space-y-4 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-bold text-sm text-white">Вход для мастера</h3>

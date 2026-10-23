@@ -135,11 +135,11 @@ export function AdminModal({
   };
 
   return (
-    // Centered modal on all devices for comfortable, ergonomic access
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+    // Starts safely below Telegram WebApp top HUD on mobile
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex flex-col justify-start sm:justify-center items-center pt-20 pb-8 px-3 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      <div className="relative w-full max-w-md bg-[#0d0e14] rounded-2xl border border-white/[0.08] shadow-2xl p-4 sm:p-5 text-neutral-200 z-10 max-h-[88vh] overflow-y-auto space-y-4">
+      <div className="relative w-full max-w-md bg-[#0d0e14] rounded-2xl border border-white/[0.08] shadow-2xl p-4 sm:p-5 text-neutral-200 z-10 max-h-[80vh] overflow-y-auto space-y-4">
         
         {/* Header with Title, Close, and LOG OUT Button */}
         <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">

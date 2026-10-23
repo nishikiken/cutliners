@@ -6,7 +6,8 @@ import {
   EasterEggTransparent, 
   RoseTransparent,
   SummerPalmTransparent,
-  ScissorsArtisanTransparent
+  ScissorsArtisanTransparent,
+  HalloweenCornerWeb
 } from './ThemeIcons';
 
 export function Header({ 
@@ -35,32 +36,32 @@ export function Header({
         );
       case 'newyear':
         return (
-          <div className="transform -rotate-3 -translate-y-1 filter drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">
+          <div className="transform -rotate-3 -translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">
             <SnowmanTransparent className="w-8 h-9 sm:w-9 sm:h-10" />
           </div>
         );
       case 'easter':
         return (
-          <div className="transform -rotate-3 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
+          <div className="transform -rotate-2 -translate-y-1 translate-x-1.5 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
             <EasterEggTransparent className="w-8 h-8 sm:w-9 sm:h-9" />
           </div>
         );
       case 'valentines':
         return (
           <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]">
-            <RoseTransparent className="w-7 h-7 sm:w-8 sm:h-8" />
+            <RoseTransparent className="w-9 h-9 sm:w-10 sm:h-10" />
           </div>
         );
       case 'summer':
         return (
-          <div className="transform -rotate-6 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
-            <SummerPalmTransparent className="w-8 h-8 sm:w-9 sm:h-9" />
+          <div className="transform -rotate-3 translate-y-0.5 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
+            <SummerPalmTransparent className="w-9 h-9 sm:w-10 sm:h-10" />
           </div>
         );
       default:
         return (
           <div className="transform -rotate-12 translate-y-0.5 opacity-80">
-            <ScissorsArtisanTransparent className="w-6 h-6" />
+            <ScissorsArtisanTransparent className="w-7 h-7 sm:w-8 sm:h-8" />
           </div>
         );
     }
@@ -69,20 +70,31 @@ export function Header({
   return (
     // pt-24 (96px) ensures complete clearance from Telegram's top HUD (Close ✕ and •••)
     <header className="w-full relative z-30 pt-24 pb-2 px-4 select-none">
-      <div className="relative max-w-md mx-auto flex items-center justify-between">
-        
-        {/* Left: Currency Toggle (₴ UAH / $ USD) */}
-        <button
-          onClick={onToggleCurrency}
-          className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 transition-all text-xs font-mono text-neutral-300 hover:text-white"
-          title="Сменить валюту: ₴ (Гривны) / $ (Доллары)"
-        >
-          <span className="font-semibold">{currency === 'uah' ? '₴ UAH' : '$ USD'}</span>
-        </button>
+      
+      {/* Halloween subtle delicate corner web */}
+      {currentTheme.id === 'halloween' && (
+        <div className="absolute top-0 right-0 z-10 pointer-events-none opacity-30 text-neutral-300">
+          <HalloweenCornerWeb className="w-28 h-28" />
+        </div>
+      )}
 
-        {/* Center: Brand Lockup "CUTLINERS" with Thematic Accessory on the LEFT leaning on "C" */}
-        <div className="flex items-center justify-center cursor-default">
-          <div className="inline-flex items-center justify-center -space-x-1.5 sm:-space-x-2">
+      {/* Balanced 3-column layout ensuring dead-center alignment of logo */}
+      <div className="relative max-w-md mx-auto flex items-center justify-between min-h-[48px]">
+        
+        {/* Left column: Currency Toggle (₴ UAH / $ USD) */}
+        <div className="w-20 flex justify-start z-20">
+          <button
+            onClick={onToggleCurrency}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 transition-all text-xs font-mono text-neutral-300 hover:text-white"
+            title="Сменить валюту: ₴ (Гривны) / $ (Доллары)"
+          >
+            <span className="font-semibold">{currency === 'uah' ? '₴ UAH' : '$ USD'}</span>
+          </button>
+        </div>
+
+        {/* Center: Brand Lockup "CUTLINERS" perfectly centered in the middle of screen */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center justify-center cursor-default z-10 pointer-events-auto">
+          <div className="inline-flex items-center justify-center -space-x-1 sm:-space-x-1.5">
             
             {/* Thematic Icon (Tightly hugging the initial capital C) */}
             <div className="shrink-0 z-10 pointer-events-none">
@@ -106,8 +118,8 @@ export function Header({
           </div>
         </div>
 
-        {/* Right: Guide and discreet Master indicator if unlocked */}
-        <div className="flex items-center gap-1.5">
+        {/* Right column: Guide and discreet Master indicator if unlocked */}
+        <div className="w-20 flex justify-end items-center gap-1.5 z-20">
           <button
             onClick={onOpenGuide}
             className="p-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-neutral-400 hover:text-white active:scale-95 transition-all"

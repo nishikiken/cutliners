@@ -132,49 +132,40 @@ export function PumpkinTransparent({ className = 'w-7 h-7' }) {
   );
 }
 
-// 4. Stylish Winter Snowman with cute snowball paws/feet (100% Transparent Background)
+// 4. Classic Stylish Winter Snowman (Restored Clean Edition, 100% Transparent Background)
 export function SnowmanTransparent({ className = 'w-8 h-9' }) {
   return (
-    <svg className={className} viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Two cute snowball feet / paws at the base */}
-      <circle cx="35" cy="96" r="10" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1" filter="drop-shadow(0 2px 4px rgba(56,189,248,0.25))" />
-      <circle cx="65" cy="96" r="10" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1" filter="drop-shadow(0 2px 4px rgba(56,189,248,0.25))" />
+    <svg className={className} viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Bottom snowball */}
+      <circle cx="50" cy="74" r="26" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1.2" filter="drop-shadow(0 0 8px rgba(56,189,248,0.3))" />
+      {/* Coal buttons */}
+      <circle cx="50" cy="68" r="2" fill="#0f172a" />
+      <circle cx="50" cy="76" r="2" fill="#0f172a" />
+      <circle cx="50" cy="84" r="2" fill="#0f172a" />
 
-      {/* Main bottom snowball */}
-      <circle cx="50" cy="72" r="25" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="1.2" filter="drop-shadow(0 0 8px rgba(56,189,248,0.3))" />
-      
-      {/* Coal buttons on belly */}
-      <circle cx="50" cy="65" r="2.2" fill="#0f172a" />
-      <circle cx="50" cy="74" r="2.2" fill="#0f172a" />
-      <circle cx="50" cy="83" r="2.2" fill="#0f172a" />
-
-      {/* Cozy red scarf */}
-      <path d="M 35 48 Q 50 53 65 48 L 67 53 Q 50 58 33 53 Z" fill="#e11d48" />
-      <rect x="55" y="50" width="7" height="19" rx="2" fill="#e11d48" transform="rotate(12 55 50)" />
-      {/* Scarf fringes */}
-      <line x1="56" y1="69" x2="56" y2="72" stroke="#fb7185" strokeWidth="1" />
-      <line x1="59" y1="69" x2="59" y2="72" stroke="#fb7185" strokeWidth="1" />
-      <line x1="62" y1="69" x2="62" y2="72" stroke="#fb7185" strokeWidth="1" />
+      {/* Red cozy scarf */}
+      <path d="M 36 49 Q 50 54 64 49 L 66 54 Q 50 59 34 54 Z" fill="#e11d48" />
+      <rect x="54" y="52" width="7" height="18" rx="2" fill="#e11d48" transform="rotate(10 54 52)" />
 
       {/* Head snowball */}
-      <circle cx="50" cy="35" r="16" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1.2" />
+      <circle cx="50" cy="36" r="17" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1" />
 
-      {/* Coal eyes & joyful smile */}
-      <circle cx="44" cy="32" r="1.8" fill="#0f172a" />
-      <circle cx="56" cy="32" r="1.8" fill="#0f172a" />
-      <circle cx="43" cy="41" r="1" fill="#0f172a" />
-      <circle cx="46" cy="43" r="1" fill="#0f172a" />
-      <circle cx="50" cy="44" r="1" fill="#0f172a" />
-      <circle cx="54" cy="43" r="1" fill="#0f172a" />
-      <circle cx="57" cy="41" r="1" fill="#0f172a" />
+      {/* Coal eyes & smile */}
+      <circle cx="44" cy="33" r="1.8" fill="#0f172a" />
+      <circle cx="56" cy="33" r="1.8" fill="#0f172a" />
+      <circle cx="44" cy="42" r="1" fill="#0f172a" />
+      <circle cx="47" cy="44" r="1" fill="#0f172a" />
+      <circle cx="50" cy="44.5" r="1" fill="#0f172a" />
+      <circle cx="53" cy="44" r="1" fill="#0f172a" />
+      <circle cx="56" cy="42" r="1" fill="#0f172a" />
 
-      {/* Orange carrot nose pointing right */}
-      <polygon points="50,35 64,37 50,39" fill="#f97316" />
+      {/* Orange carrot nose */}
+      <polygon points="50,36 62,38 50,39" fill="#f97316" />
 
-      {/* Black gentleman top hat with red ribbon */}
-      <rect x="34" y="19" width="32" height="3" rx="1.5" fill="#0f172a" />
-      <rect x="40" y="6" width="20" height="14" rx="2" fill="#1e293b" />
-      <rect x="40" y="16" width="20" height="3" fill="#e11d48" />
+      {/* Black Top Hat with red ribbon */}
+      <rect x="36" y="19" width="28" height="3" rx="1.5" fill="#0f172a" />
+      <rect x="41" y="7" width="18" height="13" rx="2" fill="#1e293b" />
+      <rect x="41" y="16" width="18" height="3" fill="#e11d48" />
     </svg>
   );
 }
@@ -202,9 +193,7 @@ export function EasterEggTransparent({ className = 'w-8 h-8' }) {
       <ellipse cx="56" cy="56" rx="28" ry="36" fill="url(#easterEggGrad)" filter="drop-shadow(0 2px 8px rgba(217,119,6,0.45))" />
       
       {/* Intricate Sacred Lace Filigree */}
-      {/* Upper arch */}
       <path d="M 33 46 Q 56 34 79 46" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="2,2" fill="none" opacity="0.9" />
-      {/* Center belt with sacred cross star */}
       <path d="M 28 56 Q 56 46 84 56" stroke="#ffffff" strokeWidth="1.8" fill="none" opacity="0.95" />
       <path d="M 28 62 Q 56 52 84 62" stroke="#ffffff" strokeWidth="1.8" fill="none" opacity="0.95" />
       {/* Cross star medallion */}
@@ -212,7 +201,6 @@ export function EasterEggTransparent({ className = 'w-8 h-8' }) {
         <polygon points="0,-7 2,-2 7,0 2,2 0,7 -2,2 -7,0 -2,-2" fill="#ffffff" />
         <circle cx="0" cy="0" r="1.5" fill="#d97706" />
       </g>
-      {/* Lower arch */}
       <path d="M 34 68 Q 56 78 78 68" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="2,2" fill="none" opacity="0.9" />
 
       {/* Tiny decorative pearls */}
@@ -225,7 +213,7 @@ export function EasterEggTransparent({ className = 'w-8 h-8' }) {
 }
 
 // 6. Romantic Heart with Blooming Velvet Rose (Valentine's Day)
-export function RoseTransparent({ className = 'w-8 h-8' }) {
+export function RoseTransparent({ className = 'w-9 h-9' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -250,7 +238,7 @@ export function RoseTransparent({ className = 'w-8 h-8' }) {
            C 62 14, 77 14, 82 28 
            C 88 46, 76 64, 50 82 Z"
         fill="url(#heartGrad)"
-        filter="drop-shadow(0 2px 8px rgba(225,29,72,0.4))"
+        filter="drop-shadow(0 2px 8px rgba(225,29,72,0.45))"
       />
 
       {/* Golden artisan seam thread curving across the heart */}
@@ -279,79 +267,131 @@ export function RoseTransparent({ className = 'w-8 h-8' }) {
   );
 }
 
-// 7. Clear & Aesthetic Summer Sunset with Twin Palm Trees (100% Transparent Background)
-export function SummerPalmTransparent({ className = 'w-8 h-8' }) {
+// 7. Summer Season: Two Rolling Sand Dunes & Graceful Palm Tree (100% Transparent Background)
+export function SummerPalmTransparent({ className = 'w-9 h-9' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="sunsetDiscGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#fef08a" />
-          <stop offset="55%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#ea580c" />
-        </radialGradient>
+        <linearGradient id="duneGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#b45309" />
+        </linearGradient>
+        <linearGradient id="duneGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fbbf24" />
+          <stop offset="100%" stopColor="#d97706" />
+        </linearGradient>
       </defs>
 
-      {/* Radiant Sun Disc */}
-      <circle cx="50" cy="48" r="32" fill="url(#sunsetDiscGrad)" filter="drop-shadow(0 0 10px rgba(245,158,11,0.5))" />
+      {/* Two Smooth Sand Dunes / Hills at the bottom */}
+      {/* Background Dune */}
+      <path
+        d="M 12 88 Q 36 68 62 82 Q 78 74 94 88 Z"
+        fill="url(#duneGrad1)"
+        opacity="0.85"
+      />
+      {/* Foreground Dune */}
+      <path
+        d="M 8 92 Q 40 74 70 88 Q 84 84 96 92 Z"
+        fill="url(#duneGrad2)"
+        filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
+      />
 
-      {/* Horizontal Horizon Sunset Stripes across bottom half of sun */}
-      <rect x="22" y="56" width="56" height="2" fill="#08080c" opacity="0.6" rx="1" />
-      <rect x="26" y="62" width="48" height="2.5" fill="#08080c" opacity="0.75" rx="1" />
-      <rect x="32" y="68" width="36" height="3" fill="#08080c" opacity="0.9" rx="1" />
+      {/* Graceful Palm Tree rising from the sand dune */}
+      {/* Trunk */}
+      <path
+        d="M 44 80 Q 48 54 56 30"
+        stroke="#78350f"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      {/* Coconut accents */}
+      <circle cx="53" cy="32" r="2.5" fill="#451a03" />
+      <circle cx="57" cy="33" r="2.5" fill="#451a03" />
 
-      {/* Silhouette of Twin Tropical Palm Trees */}
-      {/* Tall Palm Trunk */}
-      <path d="M 38 84 Q 44 60 54 36" stroke="#1c1917" strokeWidth="4" strokeLinecap="round" />
-      {/* Tall Palm Fronds */}
-      <path d="M 54 36 Q 30 28 18 42" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 54 36 Q 42 16 38 8" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 54 36 Q 66 16 80 18" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 54 36 Q 78 30 88 42" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 54 36 Q 64 52 68 64" stroke="#1c1917" strokeWidth="2.5" strokeLinecap="round" />
-
-      {/* Smaller companion palm */}
-      <path d="M 32 84 Q 35 68 32 54" stroke="#1c1917" strokeWidth="2.8" strokeLinecap="round" />
-      <path d="M 32 54 Q 18 48 10 58" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
-      <path d="M 32 54 Q 24 38 20 32" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
-      <path d="M 32 54 Q 44 42 50 44" stroke="#1c1917" strokeWidth="2" strokeLinecap="round" />
+      {/* Lush Palm Fronds curving out */}
+      <path d="M 56 30 Q 34 22 18 34" stroke="#15803d" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 56 30 Q 42 12 34 4" stroke="#16a34a" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 56 30 Q 68 12 82 14" stroke="#22c55e" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 56 30 Q 80 24 90 38" stroke="#16a34a" strokeWidth="2.8" strokeLinecap="round" />
+      <path d="M 56 30 Q 68 44 74 58" stroke="#15803d" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M 56 30 Q 38 40 30 52" stroke="#166534" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
 
-// 8. Classic Sartorial Atelier Emblem: Crossed Tailor Shears & Needle with Thread (100% Transparent Background)
+// 8. Classic Atelier: Delicate Tailoring Needle with Flowing Thread Loop (100% Transparent Background)
 export function ScissorsArtisanTransparent({ className = 'w-8 h-8' }) {
   return (
     <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Refined silver & platinum tailoring needle with thread loop */}
+      <defs>
+        <linearGradient id="needleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="50%" stopColor="#cbd5e1" />
+          <stop offset="100%" stopColor="#94a3b8" />
+        </linearGradient>
+      </defs>
+
+      {/* Flowing Artisan Thread looping gracefully through the needle eye */}
       <path
-        d="M 18 82 Q 40 50 78 22"
+        d="M 28 68 C 10 52, 14 26, 38 28 C 58 30, 48 54, 30 66"
         stroke="#e2e8f0"
-        strokeWidth="2.5"
-        strokeLinecap="round"
+        strokeWidth="1.5"
+        strokeDasharray="2.5,2.5"
+        fill="none"
+        opacity="0.85"
       />
-      {/* Needle eye */}
-      <ellipse cx="22" cy="78" rx="2" ry="4" fill="#08080c" stroke="#e2e8f0" strokeWidth="1" transform="rotate(-40 22 78)" />
-      {/* Looping artisan thread */}
       <path
-        d="M 22 78 C 10 88, 14 96, 26 94 C 36 92, 40 76, 50 68"
+        d="M 30 66 C 24 74, 20 84, 28 90 C 38 94, 52 86, 64 74"
         stroke="#94a3b8"
-        strokeWidth="1.2"
+        strokeWidth="1.3"
         strokeDasharray="2,2"
         fill="none"
-        opacity="0.8"
+        opacity="0.7"
       />
 
-      {/* Crossed Antique Tailoring Shears */}
-      {/* Handle ring 1 */}
-      <circle cx="30" cy="30" r="11" stroke="#e2e8f0" strokeWidth="2.5" />
-      {/* Handle ring 2 */}
-      <circle cx="68" cy="72" r="11" stroke="#e2e8f0" strokeWidth="2.5" />
-      {/* Blade 1 */}
-      <path d="M 38 38 L 84 84" stroke="#f8fafc" strokeWidth="3" strokeLinecap="round" />
-      {/* Blade 2 */}
-      <path d="M 60 64 L 16 20" stroke="#cbd5e1" strokeWidth="3" strokeLinecap="round" />
-      {/* Center Pivot Screw in muted brass */}
-      <circle cx="50" cy="50" r="3" fill="#cbd5e1" stroke="#475569" strokeWidth="1" />
+      {/* Sleek Polished Silver Tailoring Needle */}
+      <path
+        d="M 26 72 L 86 16"
+        stroke="url(#needleGrad)"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+        filter="drop-shadow(0 0 4px rgba(255,255,255,0.4))"
+      />
+      {/* Sharp needle point */}
+      <path d="M 85 17 L 89 13" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+      {/* Needle eye slot */}
+      <ellipse cx="32" cy="66" rx="1.5" ry="4" fill="#08080c" stroke="#e2e8f0" strokeWidth="0.8" transform="rotate(-45 32 66)" />
+    </svg>
+  );
+}
+
+// 9. Delicate Corner Spiderweb for Halloween (100% vector, non-intrusive)
+export function HalloweenCornerWeb({ className = 'w-24 h-24' }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Web radiating from top-right corner (100, 0) */}
+      <line x1="100" y1="0" x2="0" y2="0" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
+      <line x1="100" y1="0" x2="10" y2="40" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
+      <line x1="100" y1="0" x2="35" y2="75" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
+      <line x1="100" y1="0" x2="65" y2="95" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
+      <line x1="100" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.75" opacity="0.4" />
+
+      {/* Concentric curved webbing arcs */}
+      <path d="M 80 0 Q 82 18 100 20" stroke="currentColor" strokeWidth="0.65" opacity="0.45" fill="none" />
+      <path d="M 60 0 Q 64 36 100 40" stroke="currentColor" strokeWidth="0.65" opacity="0.45" fill="none" />
+      <path d="M 40 0 Q 46 54 100 60" stroke="currentColor" strokeWidth="0.65" opacity="0.45" fill="none" />
+      <path d="M 20 0 Q 28 72 100 80" stroke="currentColor" strokeWidth="0.65" opacity="0.45" fill="none" />
+      <path d="M 0 0 Q 10 90 100 100" stroke="currentColor" strokeWidth="0.65" opacity="0.35" fill="none" />
+
+      {/* Tiny subtle spider dangling on thread */}
+      <line x1="68" y1="28" x2="68" y2="48" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+      <circle cx="68" cy="50" r="2" fill="currentColor" opacity="0.6" />
+      <circle cx="68" cy="48" r="1.2" fill="currentColor" opacity="0.6" />
     </svg>
   );
 }

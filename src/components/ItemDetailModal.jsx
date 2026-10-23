@@ -55,11 +55,11 @@ export function ItemDetailModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex flex-col justify-start sm:justify-center items-center pt-20 pb-8 px-3 sm:p-4">
       <div className="fixed inset-0 bg-black/60" onClick={onClose} />
 
-      {/* Modal centered on screen with rounded-2xl */}
-      <div className="relative w-full max-w-md bg-[#0d0e14] rounded-2xl border border-white/[0.08] shadow-2xl max-h-[88vh] overflow-y-auto z-10 flex flex-col text-neutral-200">
+      {/* Modal starting safely below Telegram HUD */}
+      <div className="relative w-full max-w-md bg-[#0d0e14] rounded-2xl border border-white/[0.08] shadow-2xl max-h-[80vh] overflow-y-auto z-10 flex flex-col text-neutral-200">
         
         {/* Mobile Pull Handle & Close Button */}
         <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-2.5 bg-[#0d0e14]/95 backdrop-blur-md border-b border-white/[0.04]">

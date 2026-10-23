@@ -53,13 +53,13 @@ export function ItemCard({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f15] via-transparent to-black/25 pointer-events-none" />
 
-          {/* Status pill */}
-          <div className="absolute top-2.5 left-2.5 pointer-events-none">
-            <span className={`text-[10px] font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full uppercase backdrop-blur-md border ${
+          {/* Status pill (Equal clean margin from top and left corner) */}
+          <div className="absolute top-2 left-2 pointer-events-none z-10">
+            <span className={`text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full uppercase backdrop-blur-md border ${
               isAvailable 
                 ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' 
                 : isCustom 
-                ? 'bg-amber-950/90 text-amber-300 border-amber-500/50'
+                ? 'bg-neutral-900/90 text-neutral-300 border-white/20'
                 : 'bg-neutral-900/90 text-neutral-400 border-neutral-700/50'
             }`}>
               {item.status}
@@ -135,8 +135,8 @@ export function ItemCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f15] via-transparent to-black/25 pointer-events-none" />
 
-        {/* Top Status Pill */}
-        <div className="absolute top-2 left-2 pointer-events-none">
+        {/* Top Status Pill (Equal margin from top and left) */}
+        <div className="absolute top-2 left-2 pointer-events-none z-10">
           <span className={`text-[8px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full uppercase backdrop-blur-md border ${
             isAvailable 
               ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' 
