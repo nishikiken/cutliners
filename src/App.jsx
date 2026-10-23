@@ -11,30 +11,35 @@ import { MeasurementGuideModal } from './components/MeasurementGuideModal';
 import { AdminModal } from './components/AdminModal';
 import { CustomOrderSection } from './components/CustomOrderSection';
 import { BottomNav } from './components/BottomNav';
-import { Scissors, ShieldCheck, Sparkles } from 'lucide-react';
+import { Scissors, ShieldCheck } from 'lucide-react';
 
 export default function App() {
-  // 1. Persistent Catalog items
+  // 1. Persistent Catalog items (rework focused)
   const [items, setItems] = useState(() => {
     try {
-      const saved = localStorage.getItem('cutliners_catalog_v2');
+      const saved = localStorage.getItem('cutliners_rework_catalog_v3');
       return saved ? JSON.parse(saved) : INITIAL_ITEMS;
     } catch {
       return INITIAL_ITEMS;
     }
   });
 
-  // 2. Active Theme (Halloween by default)
+  // 2. Currency: 'uah' (Гривны) or 'usd' (Доллары)
+  const [currency, setCurrency] = useState(() => {
+    return localStorage.getItem('cutliners_currency') || 'uah';
+  });
+
+  // 3. Active Theme (Halloween by default)
   const [currentThemeId, setCurrentThemeId] = useState(() => {
     return localStorage.getItem('cutliners_theme') || 'halloween';
   });
 
-  // 3. Logo Typography Font (Calligraphy with flourishes by default)
+  // 4. Logo Typography Font
   const [logoFont, setLogoFont] = useState(() => {
     return localStorage.getItem('cutliners_font') || 'calligraphy';
   });
 
-  // 4. Contacts for Orders
+  // 5. Contacts for Orders
   const [contacts, setContacts] = useState(() => {
     try {
       const saved = localStorage.getItem('cutliners_contacts');
@@ -44,7 +49,7 @@ export default function App() {
     }
   });
 
-  // 5. Master Mode state (unlocked for the 2 friends)
+  // 6. Master Mode state
   const [isMasterMode, setIsMasterMode] = useState(() => {
     return localStorage.getItem('cutliners_master_unlocked') === 'true';
   });
@@ -55,18 +60,22 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' (2 columns) or 'list' (1 column)
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' (2 cols) or 'list' (1 col)
   const [pinInput, setPinInput] = useState('');
   const [showPinPrompt, setShowPinPrompt] = useState(false);
 
   // Sync to local storage
   useEffect(() => {
     try {
-      localStorage.setItem('cutliners_catalog_v2', JSON.stringify(items));
+      localStorage.setItem('cutliners_rework_catalog_v3', JSON.stringify(items));
     } catch (e) {
-      console.warn('LocalStorage limit reached for large photos', e);
+      console.warn('LocalStorage limit reached', e);
     }
   }, [items]);
+
+  useEffect(() => {
+    localStorage.setItem('cutliners_currency', currency);
+  }, [currency]);
 
   useEffect(() => {
     localStorage.setItem('cutliners_theme', currentThemeId);
@@ -93,16 +102,13 @@ export default function App() {
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       const titleMatch = item.title?.toLowerCase().includes(q);
-      const fabricMatch = item.fabric?.toLowerCase().includes(q);
-      const fitMatch = item.fit?.toLowerCase().includes(q);
       const descMatch = item.description?.toLowerCase().includes(q);
-      matchSearch = titleMatch || fabricMatch || fitMatch || descMatch;
+      matchSearch = titleMatch || descMatch;
     }
 
     return matchCat && matchSearch;
   });
 
-  // Master Access Trigger
   const handleOpenAdmin = () => {
     if (isMasterMode) {
       setIsAdminOpen(true);
@@ -118,7 +124,7 @@ export default function App() {
       setShowPinPrompt(false);
       setIsAdminOpen(true);
     } else {
-      alert('Неверный код доступа. Быстрый код для вас с другом: 777');
+      alert('Неверный код доступа. Быстрый код: 777');
     }
   };
 
@@ -140,45 +146,41 @@ export default function App() {
     setItems(newItems);
   };
 
+  const handleToggleCurrency = () => {
+    setCurrency(prev => prev === 'uah' ? 'usd' : 'uah');
+  };
+
   return (
     <div className={`min-h-screen bg-gradient-to-b ${currentTheme.bgGradient} text-neutral-200 flex flex-col items-center selection:bg-amber-500/30 selection:text-amber-200 transition-colors duration-500`}>
       
-      {/* Mobile-first Container (Full width on phones, centered on wider screens) */}
+      {/* Mobile-first Container (Full width on phones, padded for Telegram WebApp) */}
       <div className="w-full max-w-md min-h-screen bg-[#08080c] relative flex flex-col pb-24 shadow-2xl">
         
         {/* Subtle background noise texture */}
         <div className="absolute inset-0 bg-noise pointer-events-none opacity-40" />
 
-        {/* Holiday Decorations */}
-        {currentThemeId === 'halloween' ? (
-          <HalloweenDecor />
-        ) : (
-          <ThemeDecors themeId={currentThemeId} />
-        )}
-
-        {/* App Header (Brand Plaque & Calligraphic Logo) */}
+        {/* Telegram WebApp-compatible Header (Padding top protects against Close/More buttons) */}
         <Header
           currentTheme={currentTheme}
           logoFont={logoFont}
           onOpenAdmin={handleOpenAdmin}
           onOpenGuide={() => setIsGuideOpen(true)}
           isMasterMode={isMasterMode}
+          currency={currency}
+          onToggleCurrency={handleToggleCurrency}
         />
 
-        {/* Main Content */}
-        <main className="relative z-10 px-3.5 py-3 space-y-4 flex-grow">
-          
-          {/* Welcome Intro for Visitors */}
-          <div className="text-center pt-1 pb-0.5">
-            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-neutral-500">
-              HANDCRAFTED BESPOKE DENIM
-            </span>
-            <h2 className="text-xs sm:text-sm font-medium text-neutral-300 mt-0.5 font-sans">
-              Шьем джинсы и одежду на заказ. Вручную, штучно, по вашим меркам.
-            </h2>
-          </div>
+        {/* Integrated Atelier Workshop Atmosphere Shelf (No floating white boxes!) */}
+        {currentThemeId === 'halloween' ? (
+          <HalloweenDecor />
+        ) : (
+          <ThemeDecors themeId={currentThemeId} />
+        )}
 
-          {/* Search, View Mode Toggle & Category Filter Pills */}
+        {/* Main Content */}
+        <main className="relative z-10 px-3 py-2 space-y-3 flex-grow">
+          
+          {/* Minimalist Search & Hidden Filter Menu */}
           <CategoryFilter
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
@@ -189,12 +191,12 @@ export default function App() {
             onToggleViewMode={() => setViewMode(prev => prev === 'grid' ? 'list' : 'grid')}
           />
 
-          {/* Master mode active banner */}
+          {/* Master mode indicator if unlocked */}
           {isMasterMode && (
-            <div className="p-2.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between text-xs font-mono">
+            <div className="py-2 px-3 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between text-xs font-mono">
               <div className="flex items-center gap-1.5 text-amber-300">
-                <ShieldCheck className="w-4 h-4 text-amber-400" />
-                <span className="text-[11px] font-bold">Режим мастеров включен</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                <span className="text-[11px] font-bold">Мастер-режим</span>
               </div>
               <button
                 onClick={() => setIsAdminOpen(true)}
@@ -205,15 +207,15 @@ export default function App() {
             </div>
           )}
 
-          {/* Product Catalog Grid (Clean 2-Column Mobile Grid or 1-Column Editorial) */}
-          <div className="space-y-2.5">
-            <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 px-1">
-              <span>Каталог изделий</span>
+          {/* Catalog Grid */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-[10px] font-mono text-neutral-400 px-1">
+              <span>Каталог перешива</span>
               <span>{filteredItems.length} {filteredItems.length === 1 ? 'вещь' : 'вещей'}</span>
             </div>
 
             {filteredItems.length > 0 ? (
-              <div className={viewMode === 'grid' ? 'grid grid-cols-2 gap-2.5' : 'grid grid-cols-1 gap-3.5'}>
+              <div className={viewMode === 'grid' ? 'grid grid-cols-2 gap-2' : 'grid grid-cols-1 gap-3'}>
                 {filteredItems.map((item) => (
                   <ItemCard
                     key={item.id}
@@ -223,11 +225,12 @@ export default function App() {
                     isMasterMode={isMasterMode}
                     onEdit={() => setIsAdminOpen(true)}
                     viewMode={viewMode}
+                    currency={currency}
                   />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-10 px-4 rounded-2xl bg-neutral-900/40 border border-white/5 space-y-2">
+              <div className="text-center py-8 px-4 rounded-2xl bg-neutral-900/40 border border-white/5 space-y-2">
                 <p className="text-neutral-400 text-xs font-mono">Ничего не найдено</p>
                 <button
                   onClick={() => {
@@ -236,32 +239,29 @@ export default function App() {
                   }}
                   className="text-xs text-amber-400 underline font-mono"
                 >
-                  Сбросить фильтры
+                  Сбросить поиск
                 </button>
               </div>
             )}
           </div>
 
-          {/* Custom Tailoring Section */}
+          {/* Custom Rework Tailoring Section */}
           <CustomOrderSection
             contacts={contacts}
             onOpenGuide={() => setIsGuideOpen(true)}
             currentTheme={currentTheme}
           />
 
-          {/* Mobile Footer */}
-          <footer className="pt-4 pb-2 text-center space-y-1.5 font-mono text-neutral-500 text-[10px] border-t border-white/[0.06]">
+          {/* Footer */}
+          <footer className="pt-3 pb-2 text-center space-y-1 font-mono text-neutral-500 text-[10px] border-t border-white/[0.06]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
-              <Scissors className="w-3.5 h-3.5 text-amber-400" />
+              <Scissors className="w-3 h-3 text-amber-400" />
               <span className="font-bold tracking-widest text-neutral-200">CUTLINERS</span>
-              <span>• Raw Denim Atelier</span>
+              <span>• Rework Atelier</span>
             </div>
-            <p className="text-neutral-500">
-              Ручной крой • Персональные замеры • Японский деним
+            <p className="text-neutral-500 text-[9px]">
+              Кастомный перешив винтажного денима под твои мерки
             </p>
-            <div className="text-neutral-600">
-              Активная тема: <strong className="text-neutral-400">{currentTheme.titleRu}</strong>
-            </div>
           </footer>
 
         </main>
@@ -277,7 +277,7 @@ export default function App() {
 
       </div>
 
-      {/* Item Detail Modal / Bottom Sheet */}
+      {/* Item Detail Modal */}
       {selectedItem && (
         <ItemDetailModal
           item={selectedItem}
@@ -285,6 +285,7 @@ export default function App() {
           onOpenGuide={() => setIsGuideOpen(true)}
           contacts={contacts}
           currentTheme={currentTheme}
+          currency={currency}
         />
       )}
 
@@ -293,7 +294,7 @@ export default function App() {
         <MeasurementGuideModal onClose={() => setIsGuideOpen(false)} />
       )}
 
-      {/* Admin / Master Atelier Control Modal */}
+      {/* Admin Control Modal */}
       <AdminModal
         isOpen={isAdminOpen}
         onClose={() => setIsAdminOpen(false)}
@@ -309,7 +310,7 @@ export default function App() {
         onImportCatalog={handleImportCatalog}
       />
 
-      {/* PIN Prompt Modal for Master Mode */}
+      {/* PIN Prompt Modal */}
       {showPinPrompt && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
           <div className="w-full max-w-xs bg-[#0e0f16] rounded-3xl border border-amber-500/30 p-5 text-neutral-200 font-mono space-y-4 shadow-2xl">
@@ -327,7 +328,7 @@ export default function App() {
             </div>
 
             <p className="text-[11px] text-neutral-400 font-sans">
-              Вход для вас с другом: добавление вещей, точные замеры и переключение тем.
+              Вход для вас с другом: добавление вещей, точные замеры и темы.
             </p>
 
             <form

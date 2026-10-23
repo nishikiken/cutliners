@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ruler, Edit3, Sparkles } from 'lucide-react';
+import { Edit3 } from 'lucide-react';
 
 export function ItemCard({ 
   item, 
@@ -7,30 +7,55 @@ export function ItemCard({
   currentTheme, 
   isMasterMode, 
   onEdit,
-  viewMode = 'grid' // 'grid' (2 columns) or 'list' (1 column editorial)
+  viewMode = 'grid',
+  currency = 'uah'
 }) {
   const isAvailable = item.status === 'В наличии';
   const isCustom = item.status === 'Под заказ';
 
+  // Format price based on currency (₴ UAH or $ USD)
+  const formatPrice = () => {
+    if (currency === 'usd' && item.priceUsd) {
+      return `$${item.priceUsd}`;
+    }
+    if (item.priceUah) {
+      return `${item.priceUah.toLocaleString('ru-RU')} ₴`;
+    }
+    if (typeof item.price === 'string') {
+      return item.price.replace('₽', '₴');
+    }
+    return 'По запросу';
+  };
+
+  const safeVal = (v) => {
+    if (!v) return null;
+    return String(v).split(' ')[0];
+  };
+
+  const imageSrc = item.images?.[0] || './assets/items/rework-01.jpg';
+
   if (viewMode === 'list') {
-    // 1-Column Editorial Full Width Lookbook Card
+    // 1-Column Editorial Lookbook View
     return (
       <div 
         onClick={() => onSelect(item)}
-        className={`group relative bg-[#0d0e14] rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer active:scale-[0.99] ${currentTheme.cardBorder} shadow-lg shadow-black/80 flex flex-col`}
+        className={`group relative bg-[#0e0f15] rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer active:scale-[0.99] ${currentTheme.cardBorder} shadow-lg shadow-black/80 flex flex-col`}
       >
         <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-950">
           <img 
-            src={item.images?.[0] || 'https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=900&q=80'} 
+            src={imageSrc} 
             alt={item.title}
             loading="lazy"
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter contrast-[1.06] brightness-[0.94]"
+            onError={(e) => {
+              e.currentTarget.src = './assets/items/rework-01.jpg';
+            }}
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter contrast-[1.05]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0e14] via-transparent to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f15] via-transparent to-black/25 pointer-events-none" />
 
-          {/* Top Status & Category Badges */}
-          <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-            <span className={`text-[10px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-full uppercase backdrop-blur-md border ${
+          {/* Status pill */}
+          <div className="absolute top-2.5 left-2.5 pointer-events-none">
+            <span className={`text-[10px] font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full uppercase backdrop-blur-md border ${
               isAvailable 
                 ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' 
                 : isCustom 
@@ -39,56 +64,52 @@ export function ItemCard({
             }`}>
               {item.status}
             </span>
-
-            <span className="text-[10px] font-mono text-neutral-300 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10">
-              {item.category}
-            </span>
           </div>
 
-          {/* Master quick edit trigger */}
+          {/* Master Edit */}
           {isMasterMode && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onEdit(item);
               }}
-              className="absolute top-2.5 right-2.5 z-20 p-2 rounded-full bg-amber-500 text-black shadow-lg active:scale-90 transition-transform"
-              title="Редактировать вещь"
+              className="absolute top-2.5 right-2.5 z-20 p-2 rounded-full bg-amber-500 text-black shadow-lg active:scale-90"
+              title="Редактировать"
             >
               <Edit3 className="w-3.5 h-3.5" />
             </button>
           )}
 
-          {/* Quick measurements preview strip */}
+          {/* Measurements preview strip */}
           {item.measurements && (
             <div className="absolute bottom-2 left-2 right-2 pointer-events-none">
-              <div className="bg-black/85 backdrop-blur-md rounded-xl py-1.5 px-3 border border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-neutral-300">
-                <span className="text-amber-400 font-bold">Замеры:</span>
-                <div className="flex items-center gap-2.5 text-[10px]">
-                  {item.measurements.waist && <span>Пояс: <strong className="text-white">{item.measurements.waist.split(' ')[0]}</strong></span>}
-                  {item.measurements.outseam && <span>Длина: <strong className="text-white">{item.measurements.outseam.split(' ')[0]}</strong></span>}
-                  {item.measurements.legOpening && <span>Выход: <strong className="text-white">{item.measurements.legOpening.split(' ')[0]}</strong></span>}
+              <div className="bg-black/80 backdrop-blur-md rounded-xl py-1 px-2.5 border border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-neutral-300">
+                <span className="text-amber-400 font-bold">Мерки:</span>
+                <div className="flex items-center gap-2">
+                  {item.measurements.waist && <span>П: <strong className="text-white">{safeVal(item.measurements.waist)}</strong></span>}
+                  {item.measurements.outseam && <span>Д: <strong className="text-white">{safeVal(item.measurements.outseam)}</strong></span>}
+                  {item.measurements.legOpening && <span>Выход: <strong className="text-white">{safeVal(item.measurements.legOpening)}</strong></span>}
                 </div>
               </div>
             </div>
           )}
         </div>
 
-        <div className="p-3.5 flex items-center justify-between gap-3">
+        <div className="p-3 flex items-center justify-between gap-3">
           <div>
             <h3 className="font-bold text-neutral-100 text-sm leading-snug group-hover:text-amber-300 transition-colors">
               {item.title}
             </h3>
-            <p className="text-[11px] text-neutral-400 font-mono mt-0.5">
-              {item.fabric || item.fit || 'Ручной пошив CUTLINERS'}
+            <p className="text-[10px] text-neutral-400 font-mono mt-0.5">
+              {item.fabric || 'Кастомный перешив'}
             </p>
           </div>
           <div className="text-right shrink-0">
             <span className="text-sm font-bold text-white font-mono block">
-              {item.price}
+              {formatPrice()}
             </span>
             <span className="text-[10px] text-amber-400 font-mono">
-              Подробнее →
+              Открыть →
             </span>
           </div>
         </div>
@@ -96,27 +117,27 @@ export function ItemCard({
     );
   }
 
-  // 2-Column Mobile Compact Lookbook Card (Standard & Clean!)
+  // 2-Column Mobile Compact Grid View
   return (
     <div 
       onClick={() => onSelect(item)}
       className={`group relative bg-[#0e0f15] rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer active:scale-[0.98] ${currentTheme.cardBorder} shadow-lg shadow-black/80 flex flex-col`}
     >
-      {/* 3:4 Portrait Image Frame */}
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-950">
         <img 
-          src={item.images?.[0] || 'https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=900&q=80'} 
+          src={imageSrc} 
           alt={item.title}
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.src = './assets/items/rework-01.jpg';
+          }}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter contrast-[1.05]"
         />
-
-        {/* Subtle Dark Vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f15] via-transparent to-black/25 pointer-events-none" />
 
         {/* Top Status Pill */}
-        <div className="absolute top-2 left-2 flex items-center gap-1 pointer-events-none">
-          <span className={`text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full uppercase backdrop-blur-md border ${
+        <div className="absolute top-2 left-2 pointer-events-none">
+          <span className={`text-[8px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full uppercase backdrop-blur-md border ${
             isAvailable 
               ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50' 
               : isCustom 
@@ -127,48 +148,47 @@ export function ItemCard({
           </span>
         </div>
 
-        {/* Master quick edit trigger */}
+        {/* Master Edit */}
         {isMasterMode && (
           <button
             onClick={(e) => {
               e.stopPropagation();
               onEdit(item);
             }}
-            className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-amber-500 text-black shadow-lg active:scale-90 transition-transform"
+            className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-amber-500 text-black shadow-lg active:scale-90"
             title="Редактировать"
           >
             <Edit3 className="w-3 h-3" />
           </button>
         )}
 
-        {/* Quick Measurements Chip Overlay */}
+        {/* Quick Measurements Chip */}
         {item.measurements && item.measurements.waist && (
           <div className="absolute bottom-1.5 left-1.5 right-1.5 pointer-events-none">
             <div className="bg-black/75 backdrop-blur-md rounded-lg py-0.5 px-1.5 border border-white/[0.08] text-[9px] font-mono text-neutral-300 flex items-center justify-between">
-              <span className="text-amber-400">П: {item.measurements.waist.split(' ')[0]}</span>
-              {item.measurements.outseam && <span>Д: {item.measurements.outseam.split(' ')[0]}</span>}
-              {item.measurements.legOpening && <span>Низ: {item.measurements.legOpening.split(' ')[0]}</span>}
+              <span className="text-amber-400">П: {safeVal(item.measurements.waist)}</span>
+              {item.measurements.outseam && <span>Д: {safeVal(item.measurements.outseam)}</span>}
+              {item.measurements.legOpening && <span>Низ: {safeVal(item.measurements.legOpening)}</span>}
             </div>
           </div>
         )}
       </div>
 
-      {/* Card Info */}
       <div className="p-2.5 flex flex-col justify-between flex-grow gap-1">
         <div>
           <h3 className="font-semibold text-neutral-100 text-xs sm:text-sm line-clamp-1 group-hover:text-amber-300 transition-colors">
             {item.title}
           </h3>
-          <p className="text-[10px] text-neutral-400 font-mono line-clamp-1 mt-0.5">
-            {item.fabric || item.fit || item.category}
+          <p className="text-[9px] text-neutral-400 font-mono line-clamp-1 mt-0.5">
+            {item.fabric || 'Перешив'}
           </p>
         </div>
 
         <div className="pt-1.5 border-t border-white/[0.06] flex items-center justify-between">
           <span className="text-xs sm:text-sm font-bold text-white font-mono">
-            {item.price}
+            {formatPrice()}
           </span>
-          <span className="text-[10px] text-amber-400 font-mono">
+          <span className="text-[9px] text-amber-400 font-mono">
             Мерки →
           </span>
         </div>
