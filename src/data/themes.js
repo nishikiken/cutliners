@@ -1,0 +1,80 @@
+export const THEMES = {
+  halloween: {
+    id: 'halloween',
+    name: 'Halloween Spooky Drop',
+    titleRu: 'Хэллоуин (Тыквы, Кот, Reese\'s)',
+    accentColor: '#ff7700',
+    accentSecondary: '#a855f7',
+    badgeText: 'HALLOWEEN DROP 🎃',
+    bgGradient: 'from-[#0b0810] via-[#120a1c] to-[#08080c]',
+    cardBorder: 'border-orange-500/20 hover:border-orange-500/50',
+    glowColor: 'rgba(255, 119, 0, 0.25)',
+    ambientSoundText: 'Ведьмины сумерки & Шелест тканей',
+    holidayPhrase: 'Сшито вручную в самый мрачный сезон года'
+  },
+  newyear: {
+    id: 'newyear',
+    name: 'Winter & New Year',
+    titleRu: 'Новый год и Рождество',
+    accentColor: '#38bdf8',
+    accentSecondary: '#fbbf24',
+    badgeText: 'WINTER SOLSTICE ❄️',
+    bgGradient: 'from-[#060e14] via-[#09151e] to-[#07090d]',
+    cardBorder: 'border-sky-500/20 hover:border-sky-400/50',
+    glowColor: 'rgba(56, 189, 248, 0.25)',
+    ambientSoundText: 'Холодное сырое полотно & Морозный иней',
+    holidayPhrase: 'Зимний релиз из самого плотного сырого денима'
+  },
+  easter: {
+    id: 'easter',
+    name: 'Gothic Easter',
+    titleRu: 'Пасха (Готические яйца и возрождение)',
+    accentColor: '#c084fc',
+    accentSecondary: '#facc15',
+    badgeText: 'DARK REBIRTH 🥚',
+    bgGradient: 'from-[#0d0914] via-[#150d22] to-[#08080c]',
+    cardBorder: 'border-purple-500/20 hover:border-purple-400/50',
+    glowColor: 'rgba(192, 132, 252, 0.25)',
+    ambientSoundText: 'Возрождение формы & Мистический шов',
+    holidayPhrase: 'Трансформация винтажного хлопка в новые силуэты'
+  },
+  summer: {
+    id: 'summer',
+    name: 'Summer Dusk Season',
+    titleRu: 'Открытие летнего сезона',
+    accentColor: '#f97316',
+    accentSecondary: '#ec4899',
+    badgeText: 'SUMMER DROP 🌅',
+    bgGradient: 'from-[#140b0f] via-[#1f0e1a] to-[#0a070e]',
+    cardBorder: 'border-orange-500/20 hover:border-pink-500/50',
+    glowColor: 'rgba(249, 115, 22, 0.25)',
+    ambientSoundText: 'Полуночный закат & Летний бриз',
+    holidayPhrase: 'Облегченные силуэты, винтажные варки и свобода кроя'
+  },
+  valentines: {
+    id: 'valentines',
+    name: 'Valentine Noir',
+    titleRu: 'День всех влюбленных',
+    accentColor: '#f43f5e',
+    accentSecondary: '#fb7185',
+    badgeText: 'BLOOD & THREADS 🖤',
+    bgGradient: 'from-[#13070b] via-[#1c0812] to-[#080709]',
+    cardBorder: 'border-rose-500/20 hover:border-rose-400/50',
+    glowColor: 'rgba(244, 63, 94, 0.25)',
+    ambientSoundText: 'Красная нить судьбы & Пронзенные сердца',
+    holidayPhrase: 'Любовь к ручному пошиву, деталям и вечным вещам'
+  },
+  noir: {
+    id: 'noir',
+    name: 'Raw Denim Atelier',
+    titleRu: 'Классическая мастерская (Noir Denim)',
+    accentColor: '#d97706',
+    accentSecondary: '#ef4444',
+    badgeText: 'ATELIER RAW ✂️',
+    bgGradient: 'from-[#0a0b10] via-[#10121a] to-[#07070a]',
+    cardBorder: 'border-amber-500/20 hover:border-amber-400/50',
+    glowColor: 'rgba(217, 119, 6, 0.25)',
+    ambientSoundText: 'Стук швейной машины & Медные заклепки',
+    holidayPhrase: 'Аутентичный пошив на заказ. Качественный японский деним.'
+  }
+};

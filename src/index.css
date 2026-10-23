@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --app-bg: #08080c;
+    --app-panel: #111218;
+    --app-border: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: var(--app-bg);
+    color: #e5e5ea;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Calligraphic & Gothic Typography */
+.font-calligraphy {
+  font-family: 'Pinyon Script', cursive;
+}
+
+.font-gothic {
+  font-family: 'UnifrakturMaguntia', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-pirata {
+  font-family: 'Pirata One', cursive;
+}
+
+.font-mono-nums {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Atmospheric noise overlay */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Dark denim seam dashed pattern */
+.border-seam {
+  border-style: dashed;
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+/* Hide scrollbar for mobile carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes flicker {
+  0%, 100% { opacity: 0.95; filter: drop-shadow(0 0 14px rgba(255, 115, 0, 0.75)); }
+  50% { opacity: 0.75; filter: drop-shadow(0 0 8px rgba(255, 90, 0, 0.45)); }
+  75% { opacity: 0.9; filter: drop-shadow(0 0 18px rgba(255, 130, 0, 0.85)); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(2deg); }
+}
+
+@keyframes catTwitch {
+  0%, 90%, 100% { transform: scale(1) translateY(0); }
+  92% { transform: scale(1.03) translateY(-2px) rotate(-1deg); }
+  94% { transform: scale(0.98) translateY(1px) rotate(1deg); }
+  96% { transform: scale(1.02) translateY(-1px); }
+}
+
+@keyframes spineBristle {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4)); }
+  50% { filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.6)); }
+}
+
+.animate-pumpkin-flicker {
+  animation: flicker 2.8s infinite ease-in-out;
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s infinite ease-in-out;
+}
+
+.animate-cat-twitch {
+  animation: catTwitch 5s infinite ease-in-out;
+}
+
+.animate-spine-bristle {
+  animation: spineBristle 3s infinite ease-in-out;
+}
