@@ -11,26 +11,21 @@ export const INITIAL_ITEMS = [
       './assets/items/rework-01.jpg',
       './assets/items/rework-02.jpg'
     ],
-    fabric: 'Кастомный перешив (винтажный плотный хлопок)',
-    composition: '100% Хлопок (детали из нескольких отобранных пар)',
-    fit: 'Wide Leg / Relaxed Stacking',
-    description: 'Ручной перешив из отобранных пар винтажного денима. Двойные накладные панели на коленях, усиленные тройные швы, аккуратные потертости и необработанный низ штанины.',
+    fit: 'Wide Leg / Двойные колени',
+    description: 'Двойные коленные панели, бахрома по низу, усиленные швы.',
     measurements: {
       waist: '84 см',
       outseam: '110 см',
       inseam: '81 см',
-      frontRise: '32 см',
-      backRise: '40 см',
-      thigh: '34 см',
       legOpening: '25 см'
     },
-    tailoredBy: 'CUTLINERS Rework',
+    tailoredBy: 'CUTLINERS',
     featured: true,
     createdAt: '2026-10-22'
   },
   {
     id: 'cut-002',
-    title: 'Distressed Patchwork Baggy Jeans',
+    title: 'Distressed Patchwork Baggy',
     category: 'Джинсы',
     status: 'Под заказ',
     priceUah: 2500,
@@ -39,26 +34,21 @@ export const INITIAL_ITEMS = [
       './assets/items/rework-02.jpg',
       './assets/items/rework-03.jpg'
     ],
-    fabric: 'Перешив из контрастного денима разных оттенков',
-    composition: '100% Винтажный хлопок',
-    fit: 'Straight Baggy',
-    description: 'Пэчворк-силуэт, собранный из разных фактур денима. Индивидуальный подбор вставок, контрастные нити, петля под инструмент и свободная посадка.',
+    fit: 'Straight Baggy / Пэчворк',
+    description: 'Контрастные вставки денима, кастомный дистресс, петля под инструмент.',
     measurements: {
       waist: '80 см',
       outseam: '108 см',
       inseam: '79 см',
-      frontRise: '31 см',
-      backRise: '39 см',
-      thigh: '33 см',
       legOpening: '24 см'
     },
-    tailoredBy: 'CUTLINERS Rework',
+    tailoredBy: 'CUTLINERS',
     featured: true,
     createdAt: '2026-10-21'
   },
   {
     id: 'cut-003',
-    title: 'Custom Flare Raw Edge Denim',
+    title: 'Custom Flare Raw Edge',
     category: 'Джинсы',
     status: 'В наличии',
     priceUah: 2100,
@@ -67,20 +57,15 @@ export const INITIAL_ITEMS = [
       './assets/items/rework-03.jpg',
       './assets/items/rework-01.jpg'
     ],
-    fabric: 'Винтажный деним с клиньями-вставками',
-    composition: '100% Хлопок',
     fit: 'Flared / Клеш от колена',
-    description: 'Перешитые джинсы с вшитыми боковыми клиньями для создания массивного клеш-силуэта на обувь. Необработанный срез снизу с ручной бахромой.',
+    description: 'Вшитые боковые клинья под массивную обувь, необработанный низ.',
     measurements: {
       waist: '82 см',
       outseam: '112 см',
       inseam: '84 см',
-      frontRise: '29 см',
-      backRise: '38 см',
-      thigh: '31 см',
       legOpening: '27 см'
     },
-    tailoredBy: 'CUTLINERS Rework',
+    tailoredBy: 'CUTLINERS',
     featured: true,
     createdAt: '2026-10-20'
   },
@@ -95,23 +80,21 @@ export const INITIAL_ITEMS = [
       './assets/items/rework-04.jpg',
       './assets/items/rework-05.jpg'
     ],
-    fabric: 'Перешив из нескольких винтажных курток и джинс',
-    composition: 'Плотный хлопковый деним',
-    fit: 'Boxy / Оверсайз крой',
-    description: 'Куртка мастера, полностью пересобранная вручную. Большие накладные карманы, прочные металлические болты, усиленная планка и воротник.',
+    fit: 'Boxy / Оверсайз куртка',
+    description: 'Большие накладные карманы, металлические болты, усиленная планка.',
     measurements: {
       chest: '122 см',
       length: '70 см',
       shoulders: '53 см',
       sleeve: '64 см'
     },
-    tailoredBy: 'CUTLINERS Rework',
+    tailoredBy: 'CUTLINERS',
     featured: false,
     createdAt: '2026-10-19'
   },
   {
     id: 'cut-005',
-    title: 'Vintage Grey Wide Skater Jeans',
+    title: 'Vintage Grey Wide Skater',
     category: 'Джинсы',
     status: 'В наличии',
     priceUah: 1950,
@@ -120,20 +103,15 @@ export const INITIAL_ITEMS = [
       './assets/items/rework-05.jpg',
       './assets/items/rework-06.jpg'
     ],
-    fabric: 'Серый вытертый винтажный деним',
-    composition: '100% Хлопок',
     fit: 'Ultra Baggy Skater',
-    description: 'Широкие оверсайз-штаны из пепельно-серого денима. Перешитый расширенный пояс со скрытой подгонкой, эффект естественного износа.',
+    description: 'Пепельно-серый винтажный деним, широкий крой со складками на кроссовки.',
     measurements: {
       waist: '86 см',
       outseam: '110 см',
       inseam: '81 см',
-      frontRise: '33 см',
-      backRise: '42 см',
-      thigh: '35 см',
       legOpening: '26 см'
     },
-    tailoredBy: 'CUTLINERS Rework',
+    tailoredBy: 'CUTLINERS',
     featured: false,
     createdAt: '2026-10-18'
   }

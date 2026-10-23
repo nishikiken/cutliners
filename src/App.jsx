@@ -4,11 +4,12 @@ import { THEMES } from './data/themes';
 import { Header } from './components/Header';
 import { HalloweenDecor } from './components/HalloweenDecor';
 import { ThemeDecors } from './components/ThemeDecors';
-import { SnowEffect } from './components/SnowEffect';
+import { AmbientAtmosphere } from './components/AmbientAtmosphere';
 import { CategoryFilter } from './components/CategoryFilter';
 import { ItemCard } from './components/ItemCard';
 import { ItemDetailModal } from './components/ItemDetailModal';
 import { MeasurementGuideModal } from './components/MeasurementGuideModal';
+import { MasterOrderModal } from './components/MasterOrderModal';
 import { AdminModal } from './components/AdminModal';
 import { CustomOrderSection } from './components/CustomOrderSection';
 import { BottomNav } from './components/BottomNav';
@@ -18,7 +19,7 @@ export default function App() {
   // 1. Persistent Catalog items (rework focused)
   const [items, setItems] = useState(() => {
     try {
-      const saved = localStorage.getItem('cutliners_rework_catalog_v4');
+      const saved = localStorage.getItem('cutliners_rework_v5');
       return saved ? JSON.parse(saved) : INITIAL_ITEMS;
     } catch {
       return INITIAL_ITEMS;
@@ -40,17 +41,7 @@ export default function App() {
     return localStorage.getItem('cutliners_font') || 'calligraphy';
   });
 
-  // 5. Contacts for Orders
-  const [contacts, setContacts] = useState(() => {
-    try {
-      const saved = localStorage.getItem('cutliners_contacts');
-      return saved ? JSON.parse(saved) : { telegram: '@peretonirovan', whatsapp: '+79991234567' };
-    } catch {
-      return { telegram: '@peretonirovan', whatsapp: '+79991234567' };
-    }
-  });
-
-  // 6. Master Mode state
+  // 5. Master Mode state
   const [isMasterMode, setIsMasterMode] = useState(() => {
     return localStorage.getItem('cutliners_master_unlocked') === 'true';
   });
@@ -61,6 +52,7 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [viewMode, setViewMode] = useState('grid'); // 'grid' (2 cols) or 'list' (1 col)
   const [pinInput, setPinInput] = useState('');
   const [showPinPrompt, setShowPinPrompt] = useState(false);
@@ -68,9 +60,9 @@ export default function App() {
   // Sync to local storage
   useEffect(() => {
     try {
-      localStorage.setItem('cutliners_rework_catalog_v4', JSON.stringify(items));
+      localStorage.setItem('cutliners_rework_v5', JSON.stringify(items));
     } catch (e) {
-      console.warn('LocalStorage limit reached', e);
+      console.warn('LocalStorage error', e);
     }
   }, [items]);
 
@@ -85,10 +77,6 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('cutliners_font', logoFont);
   }, [logoFont]);
-
-  useEffect(() => {
-    localStorage.setItem('cutliners_contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   const currentTheme = THEMES[currentThemeId] || THEMES.halloween;
 
@@ -129,6 +117,12 @@ export default function App() {
     }
   };
 
+  const handleLogoutMaster = () => {
+    setIsMasterMode(false);
+    localStorage.removeItem('cutliners_master_unlocked');
+    setIsAdminOpen(false);
+  };
+
   const handleSaveItem = (itemToSave) => {
     setItems((prev) => {
       const exists = prev.some((it) => it.id === itemToSave.id);
@@ -143,27 +137,23 @@ export default function App() {
     setItems((prev) => prev.filter((it) => it.id !== id));
   };
 
-  const handleImportCatalog = (newItems) => {
-    setItems(newItems);
-  };
-
   const handleToggleCurrency = () => {
     setCurrency(prev => prev === 'uah' ? 'usd' : 'uah');
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b ${currentTheme.bgGradient} text-neutral-200 flex flex-col items-center selection:bg-amber-500/20 selection:text-amber-200 transition-colors duration-500`}>
+    <div className={`min-h-screen bg-gradient-to-b ${currentTheme.bgGradient} text-neutral-200 flex flex-col items-center selection:bg-white/10 selection:text-white transition-colors duration-500`}>
       
-      {/* Delicate falling snowflakes across whole site for New Year theme */}
-      {currentThemeId === 'newyear' && <SnowEffect />}
+      {/* Delicate, non-intrusive ambient particles for active theme */}
+      <AmbientAtmosphere themeId={currentThemeId} />
 
       {/* Mobile-first Container (Full width on phones, padded for Telegram WebApp) */}
       <div className="w-full max-w-md min-h-screen bg-[#08080c] relative flex flex-col pb-24 shadow-2xl">
         
         {/* Subtle background noise texture */}
-        <div className="absolute inset-0 bg-noise pointer-events-none opacity-30" />
+        <div className="absolute inset-0 bg-noise pointer-events-none opacity-20" />
 
-        {/* Telegram WebApp-compatible Header (Padding top protects against Close/More buttons) */}
+        {/* Telegram WebApp-compatible Header (pt-24 gives plenty of room below Telegram Close/More HUD) */}
         <Header
           currentTheme={currentTheme}
           logoFont={logoFont}
@@ -174,7 +164,7 @@ export default function App() {
           onToggleCurrency={handleToggleCurrency}
         />
 
-        {/* Integrated Atelier Workshop Atmosphere Shelf (100% Transparent, no white boxes!) */}
+        {/* Integrated Atelier Workshop Atmosphere Shelf (100% Transparent, no white boxes, no confetti) */}
         {currentThemeId === 'halloween' ? (
           <HalloweenDecor />
         ) : (
@@ -211,7 +201,7 @@ export default function App() {
             </div>
           )}
 
-          {/* Catalog Grid (Less borders, high-end look) */}
+          {/* Catalog Grid */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 px-1">
               <span>Каталог перешива</span>
@@ -268,16 +258,15 @@ export default function App() {
 
         {/* Mobile Sticky Bottom Nav Bar */}
         <BottomNav
-          activeTab={selectedCategory}
           onOpenGuide={() => setIsGuideOpen(true)}
           onOpenAdmin={handleOpenAdmin}
+          onOpenOrderModal={() => setIsOrderModalOpen(true)}
           isMasterMode={isMasterMode}
-          contacts={contacts}
         />
 
       </div>
 
-      {/* Item Detail Modal */}
+      {/* Item Detail Modal (Minimalist, no novel-like fluff, top HUD clearance) */}
       {selectedItem && (
         <ItemDetailModal
           item={selectedItem}
@@ -287,12 +276,18 @@ export default function App() {
         />
       )}
 
+      {/* Master Order Modal (Lets visitor pick between Nishiki & Vibe Code!) */}
+      <MasterOrderModal
+        isOpen={isOrderModalOpen}
+        onClose={() => setIsOrderModalOpen(false)}
+      />
+
       {/* Measurement Guide Modal */}
       {isGuideOpen && (
         <MeasurementGuideModal onClose={() => setIsGuideOpen(false)} />
       )}
 
-      {/* Admin Control Modal */}
+      {/* Admin Control Modal (With Log out button & pt-16 clearance) */}
       <AdminModal
         isOpen={isAdminOpen}
         onClose={() => setIsAdminOpen(false)}
@@ -303,9 +298,7 @@ export default function App() {
         onChangeTheme={setCurrentThemeId}
         logoFont={logoFont}
         onChangeLogoFont={setLogoFont}
-        contacts={contacts}
-        onUpdateContacts={setContacts}
-        onImportCatalog={handleImportCatalog}
+        onLogoutMaster={handleLogoutMaster}
       />
 
       {/* PIN Prompt Modal */}
@@ -326,7 +319,7 @@ export default function App() {
             </div>
 
             <p className="text-[11px] text-neutral-400 font-sans">
-              Вход для вас с другом: добавление вещей, точные замеры и темы.
+              Вход для Nishiki & Vibe Code: добавление вещей, замеры и темы.
             </p>
 
             <form
