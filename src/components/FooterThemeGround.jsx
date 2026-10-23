@@ -4,9 +4,9 @@ export function FooterThemeGround({ themeId }) {
   // 1. HALLOWEEN: Deep dark midnight-blue earthy ground with silhouette tombstones, skulls & grass
   if (themeId === 'halloween') {
     return (
-      <div className="relative w-full overflow-hidden pointer-events-none select-none -mb-1 mt-4">
+      <div className="relative w-full overflow-hidden pointer-events-none select-none">
         <svg
-          className="w-full h-16 sm:h-20 text-[#0d101a] opacity-90"
+          className="w-full h-18 sm:h-22 text-[#0d101a] opacity-90"
           viewBox="0 0 400 80"
           preserveAspectRatio="none"
           fill="currentColor"
@@ -55,343 +55,391 @@ export function FooterThemeGround({ themeId }) {
     );
   }
 
-  // 2. NEW YEAR / WINTER: Crisp Scandinavian moonlit snowdrifts with snow-capped pine trees standing IN THE FOREGROUND
+  // 2. NEW YEAR / WINTER: Real white snowdrifts & bright festive Christmas trees with holiday ornaments & golden star
   if (themeId === 'newyear') {
     return (
-      <div className="relative w-full overflow-hidden pointer-events-none select-none -mb-1 mt-4">
+      <div className="relative w-full overflow-hidden pointer-events-none select-none">
         <svg
-          className="w-full h-18 sm:h-22"
+          className="w-full h-20 sm:h-24"
           viewBox="0 0 400 85"
           preserveAspectRatio="none"
         >
           <defs>
-            {/* Background moonlit snow drift */}
-            <linearGradient id="winterDriftBack" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#101d30" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#080e18" stopOpacity="0.95" />
+            {/* Pure white & soft frost snowdrifts */}
+            <linearGradient id="pureSnowBack" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#f8fafc" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#cbd5e1" stopOpacity="0.65" />
             </linearGradient>
-
-            {/* Midground soft snow drift */}
-            <linearGradient id="winterDriftMid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#172b44" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#0b1522" stopOpacity="0.98" />
+            <linearGradient id="pureSnowFront" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.98" />
+              <stop offset="45%" stopColor="#f1f5f9" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#e2e8f0" stopOpacity="0.9" />
             </linearGradient>
           </defs>
 
-          {/* Distant rolling snowdrift */}
-          <path d="M 0 54 Q 100 42 210 48 Q 310 38 400 45 L 400 85 L 0 85 Z" fill="url(#winterDriftBack)" />
-          <path d="M 0 54 Q 100 42 210 48 Q 310 38 400 45" fill="none" stroke="#7dd3fc" strokeWidth="0.8" strokeOpacity="0.25" />
+          {/* Distant soft white snowdrift */}
+          <path d="M 0 52 Q 100 38 210 46 Q 310 36 400 44 L 400 85 L 0 85 Z" fill="url(#pureSnowBack)" />
 
-          {/* Foreground rolling snowdrift (Drawn BEFORE the trees, so trees stand proudly in front) */}
-          <path d="M 0 62 Q 90 52 180 58 Q 280 48 400 56 L 400 85 L 0 85 Z" fill="url(#winterDriftMid)" />
-          <path d="M 0 62 Q 90 52 180 58 Q 280 48 400 56" fill="none" stroke="#bae6fd" strokeWidth="0.9" strokeOpacity="0.35" />
+          {/* Main Foreground Soft Pure White Snowdrift */}
+          <path d="M 0 60 Q 80 50 170 56 Q 270 46 400 54 L 400 85 L 0 85 Z" fill="url(#pureSnowFront)" />
+          <path d="M 0 60 Q 80 50 170 56 Q 270 46 400 54" fill="none" stroke="#cbd5e1" strokeWidth="1" />
 
-          {/* Pine Tree 1 (Left - Noble 4-Tier Evergreen Pine standing proud in front) */}
-          <g transform="translate(48, 16)">
-            {/* Trunk */}
-            <rect x="14" y="44" width="3.5" height="12" fill="#261710" />
-            <ellipse cx="15.5" cy="56" rx="9" ry="2.5" fill="#0b1522" opacity="0.6" />
+          {/* Tree 1 (Left - Noble Festive Christmas Tree with Golden Star & Ornaments) */}
+          <g transform="translate(50, 14)">
+            {/* Tree Trunk */}
+            <rect x="13.5" y="44" width="4" height="12" fill="#542e18" />
+            {/* Snowy mound under tree */}
+            <ellipse cx="15.5" cy="56" rx="11" ry="3" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" />
 
-            {/* Tier 4 (Bottom) */}
-            <polygon points="15.5,18 3,46 28,46" fill="#0d3520" />
-            <path d="M 3 46 Q 9 41 15.5 42 Q 22 41 28 46 Q 24 49 15.5 48 Q 7 49 3 46 Z" fill="#e2e8f0" />
+            {/* Tier 4 (Bottom boughs) */}
+            <polygon points="15.5,18 2,46 29,46" fill="#15803d" />
+            <path d="M 2 46 Q 8 40 15.5 41 Q 23 40 29 46 Q 24 50 15.5 49 Q 7 50 2 46 Z" fill="#ffffff" />
+            {/* Ornaments on Tier 4 */}
+            <circle cx="8" cy="43" r="1.5" fill="#ef4444" />
+            <circle cx="23" cy="43" r="1.5" fill="#38bdf8" />
 
             {/* Tier 3 */}
-            <polygon points="15.5,10 6,34 25,34" fill="#114228" />
-            <path d="M 6 34 Q 11 29 15.5 30 Q 20 29 25 34 Q 21 37 15.5 36 Q 10 37 6 34 Z" fill="#edf2f7" />
+            <polygon points="15.5,10 5,34 26,34" fill="#16a34a" />
+            <path d="M 5 34 Q 10 28 15.5 29 Q 21 28 26 34 Q 22 37 15.5 36 Q 9 37 5 34 Z" fill="#ffffff" />
+            {/* Ornaments on Tier 3 */}
+            <circle cx="11" cy="31" r="1.5" fill="#facc15" />
+            <circle cx="20" cy="31" r="1.5" fill="#ef4444" />
 
             {/* Tier 2 */}
-            <polygon points="15.5,3 9,23 22,23" fill="#165132" />
-            <path d="M 9 23 Q 12 19 15.5 20 Q 19 19 22 23 Q 19 25 15.5 25 Q 12 25 9 23 Z" fill="#f7fafc" />
+            <polygon points="15.5,3 8,23 23,23" fill="#22c55e" />
+            <path d="M 8 23 Q 12 18 15.5 19 Q 19 18 23 23 Q 20 25 15.5 25 Q 11 25 8 23 Z" fill="#ffffff" />
+            <circle cx="15.5" cy="20" r="1.3" fill="#38bdf8" />
 
-            {/* Tier 1 (Top cap) */}
-            <polygon points="15.5,0 12,12 19,12" fill="#1b5e3a" />
-            <path d="M 15.5 0 Q 13.5 5 12 12 Q 15.5 13 19 12 Q 17.5 5 15.5 0 Z" fill="#ffffff" />
+            {/* Top Snow Cap */}
+            <polygon points="15.5,0 11,12 20,12" fill="#16a34a" />
+            <path d="M 15.5 0 Q 13 5 11 12 Q 15.5 13 20 12 Q 18 5 15.5 0 Z" fill="#ffffff" />
+
+            {/* Golden Star at tree apex */}
+            <polygon
+              points="15.5,-3 16.5,-1 19,-1 17,0.5 18,3 15.5,1.5 13,3 14,0.5 12,-1 14.5,-1"
+              fill="#facc15"
+              stroke="#eab308"
+              strokeWidth="0.5"
+            />
           </g>
 
-          {/* Pine Tree 2 (Mid-right - Medium 3-Tier Pine in front) */}
-          <g transform="translate(285, 24)">
-            <rect x="12" y="38" width="3" height="10" fill="#261710" />
-            <ellipse cx="13.5" cy="48" rx="8" ry="2" fill="#0b1522" opacity="0.6" />
+          {/* Tree 2 (Mid-right - Cozy Medium Christmas Tree) */}
+          <g transform="translate(285, 22)">
+            <rect x="12" y="38" width="3.5" height="10" fill="#542e18" />
+            <ellipse cx="13.7" cy="48" rx="9" ry="2.5" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" />
 
             {/* Tier 3 */}
-            <polygon points="13.5,14 3,38 24,38" fill="#0e3822" />
-            <path d="M 3 38 Q 8 33 13.5 34 Q 19 33 24 38 Q 20 41 13.5 40 Q 7 41 3 38 Z" fill="#e2e8f0" />
+            <polygon points="13.5,14 3,38 24,38" fill="#15803d" />
+            <path d="M 3 38 Q 8 32 13.5 33 Q 19 32 24 38 Q 20 41 13.5 40 Q 7 41 3 38 Z" fill="#ffffff" />
+            <circle cx="7" cy="35" r="1.4" fill="#facc15" />
+            <circle cx="20" cy="35" r="1.4" fill="#ef4444" />
 
             {/* Tier 2 */}
-            <polygon points="13.5,6 6,26 21,26" fill="#12442a" />
-            <path d="M 6 26 Q 10 22 13.5 23 Q 17 22 21 26 Q 18 28 13.5 28 Q 9 28 6 26 Z" fill="#edf2f7" />
+            <polygon points="13.5,6 6,26 21,26" fill="#16a34a" />
+            <path d="M 6 26 Q 10 21 13.5 22 Q 17 21 21 26 Q 18 28 13.5 28 Q 9 28 6 26 Z" fill="#ffffff" />
+            <circle cx="14" cy="24" r="1.3" fill="#38bdf8" />
 
-            {/* Top cap */}
-            <polygon points="13.5,0 9,14 18,14" fill="#175233" />
+            {/* Top tier */}
+            <polygon points="13.5,0 9,14 18,14" fill="#22c55e" />
             <path d="M 13.5 0 Q 11 5 9 14 Q 13.5 15 18 14 Q 16 5 13.5 0 Z" fill="#ffffff" />
+            <circle cx="13.5" cy="-1" r="2" fill="#facc15" />
           </g>
 
-          {/* Pine Tree 3 (Center-left - Charming compact pine) */}
-          <g transform="translate(170, 34) scale(0.85)">
-            <rect x="10" y="28" width="2.5" height="8" fill="#261710" />
-            <ellipse cx="11.2" cy="36" rx="6" ry="1.8" fill="#0b1522" opacity="0.5" />
-
-            <polygon points="11.2,10 2,28 20.4,28" fill="#113f27" />
-            <path d="M 2 28 Q 6.6 24 11.2 25 Q 15.8 24 20.4 28 Q 17 30 11.2 29.5 Q 5.4 30 2 28 Z" fill="#e2e8f0" />
-
-            <polygon points="11.2,0 5,17 17.4,17" fill="#165132" />
-            <path d="M 11.2 0 Q 9 6 5 17 Q 11.2 18 17.4 17 Q 13.4 6 11.2 0 Z" fill="#ffffff" />
+          {/* Tree 3 (Center-left - Sweet small snow-covered pine) */}
+          <g transform="translate(170, 32) scale(0.85)">
+            <rect x="10" y="28" width="3" height="8" fill="#542e18" />
+            <ellipse cx="11.5" cy="36" rx="7" ry="2" fill="#ffffff" />
+            <polygon points="11.5,10 2,28 21,28" fill="#15803d" />
+            <path d="M 2 28 Q 6.5 23 11.5 24 Q 16.5 23 21 28 Q 17 30 11.5 30 Q 6 30 2 28 Z" fill="#ffffff" />
+            <polygon points="11.5,0 5,17 18,17" fill="#16a34a" />
+            <path d="M 11.5 0 Q 9 5 5 17 Q 11.5 18 18 17 Q 14 5 11.5 0 Z" fill="#ffffff" />
+            <circle cx="11.5" cy="-1" r="1.8" fill="#ef4444" />
           </g>
 
-          {/* Tiny sparkling ice crystals in the snow */}
-          <circle cx="120" cy="68" r="1" fill="#7dd3fc" opacity="0.75" />
-          <circle cx="230" cy="64" r="1.2" fill="#ffffff" opacity="0.85" />
-          <circle cx="360" cy="67" r="0.9" fill="#7dd3fc" opacity="0.75" />
+          {/* Clean snow sparkles */}
+          <circle cx="120" cy="68" r="1.3" fill="#38bdf8" />
+          <circle cx="230" cy="64" r="1.5" fill="#facc15" />
+          <circle cx="360" cy="66" r="1.3" fill="#38bdf8" />
         </svg>
       </div>
     );
   }
 
-  // 3. EASTER: Festive spring scene with traditional woven Easter basket with eggs, pussy willow (верба) & flowers
+  // 3. EASTER: Harmonious festive scene with traditional Easter basket, neatly placed painted eggs & chamomile flowers
   if (themeId === 'easter') {
     return (
-      <div className="relative w-full overflow-hidden pointer-events-none select-none -mb-1 mt-4">
+      <div className="relative w-full overflow-hidden pointer-events-none select-none">
         <svg
-          className="w-full h-18 sm:h-22"
+          className="w-full h-20 sm:h-24"
           viewBox="0 0 400 85"
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="easterBackHill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#142e1d" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#0b1a10" stopOpacity="0.95" />
+            <linearGradient id="easterLawnBack" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1e5430" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#11331c" stopOpacity="0.95" />
             </linearGradient>
-            <linearGradient id="easterFrontHill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1c422a" stopOpacity="0.92" />
-              <stop offset="100%" stopColor="#0f2417" stopOpacity="0.98" />
+            <linearGradient id="easterLawnFront" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#226b3c" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#144224" stopOpacity="0.98" />
             </linearGradient>
           </defs>
 
-          {/* Distant soft grassy hill */}
-          <path d="M 0 52 Q 100 38 210 46 Q 310 36 400 44 L 400 85 L 0 85 Z" fill="url(#easterBackHill)" />
+          {/* Distant soft green knoll */}
+          <path d="M 0 52 Q 100 40 210 46 Q 310 38 400 45 L 400 85 L 0 85 Z" fill="url(#easterLawnBack)" />
 
-          {/* Rustic decorative wooden garden fence on right */}
-          <g transform="translate(355, 36) opacity-65">
-            <rect x="0" y="4" width="3" height="24" fill="#3b2314" />
-            <polygon points="1.5,0 0,4 3,4" fill="#3b2314" />
-            <rect x="12" y="4" width="3" height="24" fill="#3b2314" />
-            <polygon points="13.5,0 12,4 15,4" fill="#3b2314" />
-            <rect x="24" y="4" width="3" height="24" fill="#3b2314" />
-            <polygon points="25.5,0 24,4 27,4" fill="#3b2314" />
-            <rect x="-2" y="8" width="30" height="2" fill="#4a2c19" />
-            <rect x="-2" y="16" width="30" height="2" fill="#4a2c19" />
-          </g>
+          {/* Foreground rolling fresh green meadow */}
+          <path d="M 0 58 Q 110 48 210 54 Q 310 46 400 52 L 400 85 L 0 85 Z" fill="url(#easterLawnFront)" />
+          <path d="M 0 58 Q 110 48 210 54 Q 310 46 400 52" fill="none" stroke="#4ade80" strokeWidth="0.8" strokeOpacity="0.3" />
 
-          {/* Tall Pussy Willow Sprig (Верба) on far left */}
-          <g transform="translate(30, 24)">
-            <path d="M 0 44 Q 10 24 20 6" stroke="#543820" strokeWidth="1.3" fill="none" />
-            {/* Silvery-white catkins with warm base */}
-            <ellipse cx="6" cy="32" rx="2.5" ry="4" fill="#f1f5f9" transform="rotate(-30 6 32)" />
-            <ellipse cx="12" cy="20" rx="2.5" ry="4" fill="#f1f5f9" transform="rotate(25 12 20)" />
-            <ellipse cx="17" cy="10" rx="2.3" ry="3.8" fill="#f1f5f9" transform="rotate(-15 17 10)" />
-            <ellipse cx="20" cy="5" rx="2" ry="3.2" fill="#ffffff" transform="rotate(10 20 5)" />
-          </g>
-
-          {/* Foreground rolling spring meadow */}
-          <path d="M 0 58 Q 110 47 220 55 Q 320 48 400 53 L 400 85 L 0 85 Z" fill="url(#easterFrontHill)" />
-          <path d="M 0 58 Q 110 47 220 55 Q 320 48 400 53" fill="none" stroke="#4ade80" strokeWidth="0.8" strokeOpacity="0.25" />
-
-          {/* Authentic Wicker Easter Basket overflowing with painted eggs (Center-Left) */}
-          <g transform="translate(135, 38)">
+          {/* Centerpiece: Charming Wicker Easter Basket neatly sitting on the grass (Center) */}
+          <g transform="translate(180, 36)">
             {/* Basket Handle */}
-            <path d="M 7 24 Q 18 2 29 24" stroke="#92400e" strokeWidth="2.5" fill="none" />
-            <path d="M 7 24 Q 18 2 29 24" stroke="#b45309" strokeWidth="1.2" fill="none" />
-            {/* Satin Ribbon Bow at top of handle */}
-            <g transform="translate(18, 5) scale(0.8)">
-              <circle cx="0" cy="0" r="2" fill="#fb7185" />
-              <path d="M 0 0 C -4 -4 -6 0 -2 2 Z" fill="#f43f5e" />
-              <path d="M 0 0 C 4 -4 6 0 2 2 Z" fill="#f43f5e" />
-              <path d="M 0 0 L -3 5 M 0 0 L 3 5" stroke="#f43f5e" strokeWidth="1" />
+            <path d="M 7 24 Q 20 2 33 24" stroke="#92400e" strokeWidth="2.8" fill="none" />
+            <path d="M 7 24 Q 20 2 33 24" stroke="#d97706" strokeWidth="1.2" fill="none" />
+            {/* Pink Satin Ribbon Bow at handle apex */}
+            <g transform="translate(20, 5) scale(0.9)">
+              <circle cx="0" cy="0" r="2.2" fill="#fb7185" />
+              <path d="M 0 0 C -4 -4 -7 0 -2 2.5 Z" fill="#f43f5e" />
+              <path d="M 0 0 C 4 -4 7 0 2 2.5 Z" fill="#f43f5e" />
+              <path d="M 0 0 L -3 6 M 0 0 L 3 6" stroke="#f43f5e" strokeWidth="1.2" />
             </g>
 
-            {/* Eggs peeking from basket rim */}
-            {/* Egg 1 (Golden yellow) */}
-            <ellipse cx="12" cy="22" rx="4.5" ry="6" fill="#f59e0b" transform="rotate(-20 12 22)" />
-            <circle cx="12" cy="20" r="0.8" fill="#fef3c7" />
-            {/* Egg 2 (Pastel lilac) */}
-            <ellipse cx="24" cy="22" rx="4.5" ry="6" fill="#c084fc" transform="rotate(22 24 22)" />
-            <path d="M 21 21 Q 24 23 27 21" stroke="#f3e8ff" strokeWidth="0.8" fill="none" />
-            {/* Egg 3 (Turquoise center) */}
-            <ellipse cx="18" cy="19" rx="5" ry="6.5" fill="#06b6d4" />
-            <path d="M 14 19 Q 18 21 22 19" stroke="#cffafe" strokeWidth="0.8" fill="none" />
+            {/* 3 Eggs peeking out from the basket */}
+            {/* Egg 1 (Golden yellow with dots) */}
+            <ellipse cx="13" cy="22" rx="5" ry="6.5" fill="#f59e0b" transform="rotate(-18 13 22)" />
+            <circle cx="13" cy="20" r="1" fill="#fef3c7" />
+            {/* Egg 2 (Lilac with stripe) */}
+            <ellipse cx="27" cy="22" rx="5" ry="6.5" fill="#c084fc" transform="rotate(18 27 22)" />
+            <path d="M 23 21 Q 27 23 31 21" stroke="#f3e8ff" strokeWidth="1" fill="none" />
+            {/* Egg 3 (Sky blue centerpiece) */}
+            <ellipse cx="20" cy="19" rx="5.5" ry="7" fill="#06b6d4" />
+            <path d="M 16 19 Q 20 21 24 19" stroke="#cffafe" strokeWidth="1" fill="none" />
 
             {/* Wicker Basket Body */}
-            <path d="M 4 23 L 7 40 Q 18 43 29 40 L 32 23 Z" fill="#78350f" />
-            {/* Wicker Weave Texture */}
-            <path d="M 5 28 Q 18 31 31 28" stroke="#b45309" strokeWidth="1" fill="none" />
-            <path d="M 6 34 Q 18 37 30 34" stroke="#b45309" strokeWidth="1" fill="none" />
-            <line x1="12" y1="24" x2="13" y2="41" stroke="#92400e" strokeWidth="0.9" />
-            <line x1="18" y1="24" x2="18" y2="42" stroke="#92400e" strokeWidth="0.9" />
-            <line x1="24" y1="24" x2="23" y2="41" stroke="#92400e" strokeWidth="0.9" />
-            {/* Basket Rim */}
-            <ellipse cx="18" cy="23" rx="14" ry="2.5" fill="#92400e" stroke="#b45309" strokeWidth="1" />
+            <path d="M 4 23 L 7 42 Q 20 45 33 42 L 36 23 Z" fill="#78350f" />
+            <path d="M 5 29 Q 20 32 35 29" stroke="#b45309" strokeWidth="1.2" fill="none" />
+            <path d="M 6 35 Q 20 38 34 35" stroke="#b45309" strokeWidth="1.2" fill="none" />
+            <line x1="13" y1="24" x2="14" y2="43" stroke="#92400e" strokeWidth="1" />
+            <line x1="20" y1="24" x2="20" y2="44" stroke="#92400e" strokeWidth="1" />
+            <line x1="27" y1="24" x2="26" y2="43" stroke="#92400e" strokeWidth="1" />
+            <ellipse cx="20" cy="23" rx="16" ry="3" fill="#92400e" stroke="#d97706" strokeWidth="1" />
           </g>
 
-          {/* Large Decorated Egg 1 resting on the grass (Left) */}
-          <g transform="translate(85, 52) rotate(-18)">
-            <ellipse cx="7" cy="9" rx="6" ry="8.5" fill="#d97706" />
-            <path d="M 1.5 7 Q 7 9.5 12.5 7" stroke="#fef3c7" strokeWidth="1.1" fill="none" />
-            <path d="M 1.5 11 Q 7 13.5 12.5 11" stroke="#fef3c7" strokeWidth="1.1" fill="none" />
-            <circle cx="7" cy="5" r="1.1" fill="#fef3c7" />
+          {/* Left Pair of Painted Eggs neatly nested in the grass */}
+          <g transform="translate(85, 52)">
+            {/* Golden chevron egg */}
+            <g rotate="-15">
+              <ellipse cx="8" cy="10" rx="6.5" ry="9" fill="#d97706" />
+              <path d="M 2 8 Q 8 10.5 14 8" stroke="#fef3c7" strokeWidth="1.2" fill="none" />
+              <path d="M 2 12 Q 8 14.5 14 12" stroke="#fef3c7" strokeWidth="1.2" fill="none" />
+              <circle cx="8" cy="6" r="1.2" fill="#fef3c7" />
+            </g>
+            {/* Coral pink egg nestled beside it */}
+            <g transform="translate(15, 2) rotate(12)">
+              <ellipse cx="7" cy="9" rx="5.5" ry="7.5" fill="#f43f5e" />
+              <circle cx="7" cy="6" r="1.2" fill="#fde047" />
+              <circle cx="5" cy="10" r="1" fill="#fde047" />
+              <circle cx="9" cy="10" r="1" fill="#fde047" />
+            </g>
           </g>
 
-          {/* Decorated Egg 2 (Ruby rose with gold dots, right of basket) */}
-          <g transform="translate(205, 54) rotate(15)">
-            <ellipse cx="6" cy="8" rx="5.5" ry="7.5" fill="#be123c" />
-            <circle cx="6" cy="5" r="1" fill="#fde047" />
-            <circle cx="4" cy="8" r="0.9" fill="#fde047" />
-            <circle cx="8" cy="8" r="0.9" fill="#fde047" />
-            <circle cx="6" cy="11" r="1" fill="#fde047" />
+          {/* Right Pair of Painted Eggs neatly nested in the grass */}
+          <g transform="translate(285, 52)">
+            {/* Spring Emerald Egg */}
+            <g rotate="-10">
+              <ellipse cx="7" cy="9" rx="6" ry="8.5" fill="#059669" />
+              <path d="M 2 7 Q 7 9.5 12 7" stroke="#a7f3d0" strokeWidth="1.2" fill="none" />
+              <path d="M 2 11 Q 7 13.5 12 11" stroke="#a7f3d0" strokeWidth="1.2" fill="none" />
+            </g>
+            {/* Ruby Rose Egg nestled beside it */}
+            <g transform="translate(14, 1) rotate(16)">
+              <ellipse cx="6.5" cy="8.5" rx="5.5" ry="7.5" fill="#be123c" />
+              <circle cx="6.5" cy="5" r="1.1" fill="#fde047" />
+              <circle cx="4" cy="9" r="1" fill="#fde047" />
+              <circle cx="9" cy="9" r="1" fill="#fde047" />
+            </g>
           </g>
 
-          {/* Decorated Egg 3 (Spring emerald green, near right) */}
-          <g transform="translate(290, 52) rotate(-12)">
-            <ellipse cx="6" cy="8" rx="5.5" ry="7.5" fill="#047857" />
-            <path d="M 1.5 6 Q 6 8.5 10.5 6" stroke="#a7f3d0" strokeWidth="1" fill="none" />
-            <path d="M 1.5 10 Q 6 12.5 10.5 10" stroke="#a7f3d0" strokeWidth="1" fill="none" />
-          </g>
-
-          {/* Blooming Spring Chamomile Flowers in the grass */}
-          <g transform="translate(245, 56) scale(0.9)">
+          {/* Neatly blooming spring chamomiles around the basket */}
+          <g transform="translate(140, 54)">
             <circle cx="5" cy="5" r="2" fill="#fbbf24" />
-            <circle cx="5" cy="1.5" r="1.5" fill="#ffffff" />
-            <circle cx="5" cy="8.5" r="1.5" fill="#ffffff" />
-            <circle cx="1.5" cy="5" r="1.5" fill="#ffffff" />
-            <circle cx="8.5" cy="5" r="1.5" fill="#ffffff" />
+            <circle cx="5" cy="1.5" r="1.6" fill="#ffffff" />
+            <circle cx="5" cy="8.5" r="1.6" fill="#ffffff" />
+            <circle cx="1.5" cy="5" r="1.6" fill="#ffffff" />
+            <circle cx="8.5" cy="5" r="1.6" fill="#ffffff" />
           </g>
 
-          {/* Nodding Snowdrop flower */}
-          <g transform="translate(115, 50)">
-            <path d="M 0 16 Q 4 6 8 4" stroke="#4ade80" strokeWidth="1" fill="none" />
-            <ellipse cx="9" cy="7" rx="2" ry="3" fill="#ffffff" transform="rotate(30 9 7)" />
+          <g transform="translate(245, 55) scale(0.9)">
+            <circle cx="5" cy="5" r="2" fill="#fbbf24" />
+            <circle cx="5" cy="1.5" r="1.6" fill="#ffffff" />
+            <circle cx="5" cy="8.5" r="1.6" fill="#ffffff" />
+            <circle cx="1.5" cy="5" r="1.6" fill="#ffffff" />
+            <circle cx="8.5" cy="5" r="1.6" fill="#ffffff" />
           </g>
         </svg>
       </div>
     );
   }
 
-  // 4. SUMMER: Clean aesthetic twilight dunes & ocean water ripple lines (Reverted from muddy tones to sleek luxury look)
+  // 4. SUMMER: Real golden yellow sand beach, clear turquoise seafoam waves & seashells (NO mud!)
   if (themeId === 'summer') {
     return (
-      <div className="relative w-full overflow-hidden pointer-events-none select-none -mb-1 mt-4">
+      <div className="relative w-full overflow-hidden pointer-events-none select-none">
         <svg
-          className="w-full h-16 sm:h-18"
-          viewBox="0 0 400 70"
+          className="w-full h-20 sm:h-24"
+          viewBox="0 0 400 85"
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="summerDuneBack" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1a1215" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#0d080a" stopOpacity="0.9" />
+            {/* Genuine sunny warm yellow sand gradients */}
+            <linearGradient id="yellowSandBack" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fde047" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#ca8a04" stopOpacity="0.75" />
             </linearGradient>
-            <linearGradient id="summerDuneFront" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#24171c" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#120a0d" stopOpacity="0.95" />
+            <linearGradient id="yellowSandFront" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fef08a" stopOpacity="0.98" />
+              <stop offset="35%" stopColor="#facc15" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#eab308" stopOpacity="0.9" />
             </linearGradient>
           </defs>
 
-          {/* Distant soft dune ridge */}
-          <path d="M 0 46 Q 120 34 240 42 Q 330 32 400 40 L 400 70 L 0 70 Z" fill="url(#summerDuneBack)" />
-          <path d="M 0 46 Q 120 34 240 42 Q 330 32 400 40" fill="none" stroke="#f59e0b" strokeWidth="0.8" strokeOpacity="0.25" />
+          {/* Distant warm yellow sand dune */}
+          <path d="M 0 50 Q 110 38 220 46 Q 320 36 400 44 L 400 85 L 0 85 Z" fill="url(#yellowSandBack)" />
 
-          {/* Foreground rolling sleek dune */}
-          <path d="M 0 54 Q 100 44 210 51 Q 320 43 400 49 L 400 70 L 0 70 Z" fill="url(#summerDuneFront)" />
-          <path d="M 0 54 Q 100 44 210 51 Q 320 43 400 49" fill="none" stroke="#f59e0b" strokeWidth="0.9" strokeOpacity="0.4" />
+          {/* Gentle, clear turquoise ocean wave washing upon the shore */}
+          <path
+            d="M 0 54 Q 80 47 160 52 Q 260 46 340 52 Q 380 48 400 51 L 400 85 L 0 85 Z"
+            fill="#0284c7"
+            opacity="0.4"
+          />
+          {/* Foaming white wave crest */}
+          <path
+            d="M 0 55 Q 80 48 160 53 Q 260 47 340 53 Q 380 49 400 52"
+            stroke="#f0f9ff"
+            strokeWidth="1.8"
+            fill="none"
+          />
 
-          {/* Calm, serene ocean water ripple lines */}
-          <path d="M 50 58 Q 110 55 170 58" stroke="#38bdf8" strokeWidth="0.8" fill="none" opacity="0.45" />
-          <path d="M 70 62 Q 130 59 190 62" stroke="#38bdf8" strokeWidth="0.7" fill="none" opacity="0.3" />
-          <path d="M 230 56 Q 290 53 350 56" stroke="#38bdf8" strokeWidth="0.8" fill="none" opacity="0.45" />
-          <path d="M 250 60 Q 310 57 370 60" stroke="#38bdf8" strokeWidth="0.7" fill="none" opacity="0.3" />
+          {/* Foreground Radiant Yellow Sand Beach */}
+          <path d="M 0 59 Q 100 50 200 56 Q 300 48 400 54 L 400 85 L 0 85 Z" fill="url(#yellowSandFront)" />
+          <path d="M 0 59 Q 100 50 200 56 Q 300 48 400 54" fill="none" stroke="#ca8a04" strokeWidth="0.8" />
 
-          {/* Delicate sleek scallop shell silhouette */}
-          <g transform="translate(195, 54) scale(0.75)" opacity="0.6">
-            <path d="M 2 8 Q 8 2 14 8 Z" fill="#d97706" />
-            <path d="M 8 2 L 8 8 M 5 4 L 7 8 M 11 4 L 9 8" stroke="#fef3c7" strokeWidth="0.7" />
+          {/* Scallop Seashell 1 (Left - Pearl & Coral) */}
+          <g transform="translate(75, 56) scale(1.1)">
+            <path d="M 2 9 Q 8 1 14 9 Z" fill="#ffedd5" stroke="#ea580c" strokeWidth="0.7" />
+            <path d="M 8 1 L 8 9 M 5 4 L 7 9 M 11 4 L 9 9" stroke="#ea580c" strokeWidth="0.7" />
+          </g>
+
+          {/* Spiral Nautilus Shell (Center) */}
+          <g transform="translate(195, 58) scale(0.95)">
+            <ellipse cx="6" cy="5" rx="5.5" ry="4" fill="#fef9c3" stroke="#d97706" strokeWidth="0.7" />
+            <path d="M 3 5 Q 6 2 9 5 Q 7 7 5 5" stroke="#d97706" strokeWidth="0.7" fill="none" />
+          </g>
+
+          {/* Scallop Seashell 2 (Right) */}
+          <g transform="translate(325, 56) scale(0.95)">
+            <path d="M 2 9 Q 8 1 14 9 Z" fill="#ffedd5" stroke="#ea580c" strokeWidth="0.7" />
+            <path d="M 8 1 L 8 9 M 5 4 L 7 9 M 11 4 L 9 9" stroke="#ea580c" strokeWidth="0.7" />
+          </g>
+
+          {/* Cute Orange Starfish basking on the yellow sand (Right-Center) */}
+          <g transform="translate(260, 56) scale(0.9)">
+            <polygon
+              points="8,1 10,6 15,6 11,9 13,14 8,11 3,14 5,9 1,6 6,6"
+              fill="#f97316"
+              stroke="#c2410c"
+              strokeWidth="0.6"
+            />
           </g>
         </svg>
       </div>
     );
   }
 
-  // 5. VALENTINE: Symmetrical, elegant romantic rose briar vines, velvet blooms & ruby hearts
+  // 5. VALENTINE: Intertwining pink swirls, glowing red hearts, roses & sparkling dots
   if (themeId === 'valentines') {
     return (
-      <div className="relative w-full overflow-hidden pointer-events-none select-none -mb-1 mt-4">
+      <div className="relative w-full overflow-hidden pointer-events-none select-none">
         <svg
-          className="w-full h-16 sm:h-20"
-          viewBox="0 0 400 80"
+          className="w-full h-20 sm:h-24"
+          viewBox="0 0 400 85"
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="valBackGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#260b17" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#12030a" stopOpacity="0.95" />
+            <linearGradient id="valBaseGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#2a0818" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#12020a" stopOpacity="0.95" />
             </linearGradient>
-            <linearGradient id="valFrontGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#350f20" stopOpacity="0.88" />
-              <stop offset="100%" stopColor="#17040d" stopOpacity="0.98" />
-            </linearGradient>
-            <filter id="rubyGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#f43f5e" floodOpacity="0.7" />
+            <filter id="heartGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="0" stdDeviation="3.5" floodColor="#f43f5e" floodOpacity="0.8" />
             </filter>
           </defs>
 
-          {/* Distant velvet knoll */}
-          <path d="M 0 50 Q 130 38 260 45 Q 340 38 400 44 L 400 80 L 0 80 Z" fill="url(#valBackGradient)" />
+          {/* Velvet ground base */}
+          <path d="M 0 56 Q 100 46 200 52 Q 300 46 400 52 L 400 85 L 0 85 Z" fill="url(#valBaseGrad)" />
 
-          {/* Graceful Rose Briar Vines with Thorns */}
-          <path d="M 20 62 Q 70 46 130 52 Q 190 58 250 48 Q 310 40 380 58" stroke="#881337" strokeWidth="1.4" fill="none" />
-          {/* Subtle thorns */}
-          <path d="M 60 52 L 58 48 M 110 51 L 112 47 M 220 54 L 219 50 M 280 44 L 282 40 M 340 48 L 342 44" stroke="#881337" strokeWidth="1.2" strokeLinecap="round" />
+          {/* Intertwining Pink Swirls / Curls (Переплетающиеся розовые завитки) */}
+          <path
+            d="M 10 65 Q 40 45 75 56 T 145 52 T 215 56 T 285 50 T 355 58 T 395 62"
+            stroke="#f472b6"
+            strokeWidth="1.8"
+            fill="none"
+          />
+          <path
+            d="M 20 60 Q 60 42 105 54 T 175 48 T 245 54 T 315 46 T 385 58"
+            stroke="#fb7185"
+            strokeWidth="1.2"
+            fill="none"
+          />
 
-          {/* Foreground velvet ground */}
-          <path d="M 0 58 Q 100 48 200 54 Q 300 48 400 53 L 400 80 L 0 80 Z" fill="url(#valFrontGradient)" />
-          <path d="M 0 58 Q 100 48 200 54 Q 300 48 400 53" fill="none" stroke="#fb7185" strokeWidth="0.8" strokeOpacity="0.3" />
+          {/* Pink flourish loops / curls */}
+          <path d="M 75 56 C 85 46 95 48 90 58 C 86 64 78 60 82 54" stroke="#f472b6" strokeWidth="1.2" fill="none" />
+          <path d="M 215 56 C 225 46 235 48 230 58 C 226 64 218 60 222 54" stroke="#f472b6" strokeWidth="1.2" fill="none" />
+          <path d="M 315 46 C 325 36 335 38 330 48 C 326 54 318 50 322 44" stroke="#f472b6" strokeWidth="1.2" fill="none" />
 
-          {/* Rose 1 (Left - Rich Tudor Rose Bloom) */}
-          <g transform="translate(85, 46) scale(0.95)">
-            <circle cx="7" cy="7" r="6" fill="#881337" />
-            <circle cx="7" cy="7" r="4.2" fill="#be123c" />
-            <circle cx="7" cy="7" r="2.5" fill="#e11d48" />
-            <circle cx="7" cy="7" r="1.2" fill="#fb7185" />
-          </g>
-
-          {/* Rose 2 (Right - Rich Tudor Rose Bloom) */}
-          <g transform="translate(295, 45) scale(0.95)">
-            <circle cx="7" cy="7" r="6" fill="#881337" />
-            <circle cx="7" cy="7" r="4.2" fill="#be123c" />
-            <circle cx="7" cy="7" r="2.5" fill="#e11d48" />
-            <circle cx="7" cy="7" r="1.2" fill="#fb7185" />
-          </g>
-
-          {/* Rose 3 (Center - Elegant Bud) */}
-          <g transform="translate(195, 50) scale(0.85)">
-            <circle cx="6" cy="6" r="4.5" fill="#881337" />
-            <circle cx="6" cy="6" r="2.8" fill="#e11d48" />
-            <circle cx="6" cy="6" r="1.2" fill="#fb7185" />
-          </g>
-
-          {/* Ruby Gemstone Hearts suspended on the briar */}
-          <g transform="translate(145, 48) scale(0.9)" filter="url(#rubyGlow)">
+          {/* Red Hearts nestled along the swirls */}
+          <g transform="translate(135, 46) scale(0.95)" filter="url(#heartGlow)">
             <path
               d="M 6 3 Q 6 1 4 1 Q 1 1 1 4 Q 1 7 6 10 Q 11 7 11 4 Q 11 1 8 1 Q 6 1 6 3 Z"
               fill="#e11d48"
             />
           </g>
 
-          <g transform="translate(245, 46) scale(0.85)" filter="url(#rubyGlow)">
+          <g transform="translate(255, 44) scale(0.9)" filter="url(#heartGlow)">
             <path
               d="M 6 3 Q 6 1 4 1 Q 1 1 1 4 Q 1 7 6 10 Q 11 7 11 4 Q 11 1 8 1 Q 6 1 6 3 Z"
               fill="#e11d48"
             />
           </g>
+
+          <g transform="translate(365, 48) scale(0.85)" filter="url(#heartGlow)">
+            <path
+              d="M 6 3 Q 6 1 4 1 Q 1 1 1 4 Q 1 7 6 10 Q 11 7 11 4 Q 11 1 8 1 Q 6 1 6 3 Z"
+              fill="#e11d48"
+            />
+          </g>
+
+          {/* Stylized Roses */}
+          <g transform="translate(50, 48) scale(0.95)">
+            <circle cx="7" cy="7" r="6" fill="#881337" />
+            <circle cx="7" cy="7" r="4.2" fill="#be123c" />
+            <circle cx="7" cy="7" r="2.5" fill="#e11d48" />
+            <circle cx="7" cy="7" r="1.2" fill="#f43f5e" />
+          </g>
+
+          <g transform="translate(180, 46) scale(1)">
+            <circle cx="7" cy="7" r="6" fill="#881337" />
+            <circle cx="7" cy="7" r="4.2" fill="#be123c" />
+            <circle cx="7" cy="7" r="2.5" fill="#e11d48" />
+            <circle cx="7" cy="7" r="1.2" fill="#f43f5e" />
+          </g>
+
+          {/* Delicate Sparkle Dots along the swirls */}
+          <circle cx="110" cy="50" r="1.3" fill="#fde047" />
+          <circle cx="165" cy="54" r="1.5" fill="#fb7185" />
+          <circle cx="280" cy="48" r="1.3" fill="#fde047" />
+          <circle cx="340" cy="52" r="1.5" fill="#fb7185" />
         </svg>
       </div>
     );
@@ -399,7 +447,7 @@ export function FooterThemeGround({ themeId }) {
 
   // 6. NOIR / CLASSIC: Sleek sartorial stitch line
   return (
-    <div className="relative w-full overflow-hidden pointer-events-none select-none -mb-1 mt-4">
+    <div className="relative w-full overflow-hidden pointer-events-none select-none">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent" />
     </div>
   );

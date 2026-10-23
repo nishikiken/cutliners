@@ -149,7 +149,7 @@ export default function App() {
       <AmbientAtmosphere themeId={currentThemeId} />
 
       {/* Mobile-first Container (Full width on phones, padded for Telegram WebApp) */}
-      <div className="w-full max-w-md min-h-screen bg-[#08080c] relative flex flex-col pb-24 shadow-2xl">
+      <div className="w-full max-w-md min-h-screen bg-[#08080c] relative flex flex-col shadow-2xl">
         
         {/* Subtle background noise texture */}
         <div className="absolute inset-0 bg-noise pointer-events-none opacity-20" />
@@ -223,8 +223,8 @@ export default function App() {
           {/* Custom Rework Tailoring Section with Intellectual & Visual Intermission Break */}
           <CustomOrderSection onOpenGuide={() => setIsGuideOpen(true)} />
 
-          {/* Minimalist Footer with discreet master trigger - shifted lower with elegant spacing */}
-          <footer className="mt-10 pt-8 pb-2 text-center space-y-1.5 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
+          {/* Minimalist Footer with discreet master trigger */}
+          <footer className="mt-8 pt-6 pb-2 text-center space-y-1.5 font-mono text-neutral-600 text-[9px] border-t border-white/[0.04]">
             <div className="flex items-center justify-center gap-1.5 text-neutral-400">
               <button 
                 onClick={handleOpenAdmin}
@@ -241,12 +241,12 @@ export default function App() {
             </p>
           </footer>
 
-          {/* Atmospheric Thematic Ground Silhouette anchors the very bottom edge of the page */}
-          <div className="mt-3 -mx-3">
-            <FooterThemeGround themeId={currentThemeId} />
-          </div>
-
         </main>
+
+        {/* Thematic Ground Landscape: Anchors the absolute bottom of the entire site */}
+        <div className="w-full mt-auto pb-16 sm:pb-6 pointer-events-none">
+          <FooterThemeGround themeId={currentThemeId} />
+        </div>
 
         {/* Mobile Sticky Bottom Nav Bar (3 evenly spaced buttons: Каталог, Замеры, Заказать) */}
         <BottomNav
